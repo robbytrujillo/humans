@@ -55,11 +55,25 @@ return new class extends Migration
             $table->timestamps();
         });
         
-        Schema::create('payrolls', function (Blueprint $table) {
+        Schema::create('payroll', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained('employees');
             $table->decimal('salary', 10, 2);
             $table->decimal('bonuses', 10, 2)->nullable();
+            $table->decimal('deductions', 10, 2)->nullable();
+            $table->decimal('net_salary', 10, 2);
+            $table->date('pay_date');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+        
+        Schema::create('presences', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('employee_id')->constrained('employees');
+            $table->date('check_in');
+            $table->date('check_out');
+            $table->date('date');
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -74,6 +88,7 @@ return new class extends Migration
         Schema::dropIfExists('departments');
         Schema::dropIfExists('roles');
         Schema::dropIfExists('tasks');
-        Schema::dropIfExists('payrolls');
+        Schema::dropIfExists('payroll');
+        Schema::dropIfExists('presences');
     }
 };
