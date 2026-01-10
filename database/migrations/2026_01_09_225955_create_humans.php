@@ -77,6 +77,17 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+        
+        Schema::create('leave_requests', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('employee_id')->constrained('employees');
+            $table->date('check_in');
+            $table->date('check_out');
+            $table->date('date');
+            $table->string('status');
+            $table->softDeletes();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -90,5 +101,6 @@ return new class extends Migration
         Schema::dropIfExists('tasks');
         Schema::dropIfExists('payroll');
         Schema::dropIfExists('presences');
+        Schema::dropIfExists('leave_requests');
     }
 };
