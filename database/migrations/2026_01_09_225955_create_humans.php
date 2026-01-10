@@ -30,7 +30,27 @@ return new class extends Migration
         Schema::create('departments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->text('description')->nullable();
+            $table->string('status');
+            $table->softDeletes();
+            $table->timestamps();
+        });
+        
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+        
+        Schema::create('tasks', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->foreignId('assigned_to')->constrained('employees');
+            $table->date('due_date');
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -43,5 +63,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('employees');
         Schema::dropIfExists('departments');
+        Schema::dropIfExists('roles');
+        Schema::dropIfExists('tasks');
     }
 };
