@@ -84,6 +84,7 @@ return new class extends Migration
             $table->string('leave_type');
             $table->date('start_date');
             $table->date('end_date');
+            $table->string('status');
             $table->softDeletes();
             $table->timestamps();
         });
