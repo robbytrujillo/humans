@@ -21,8 +21,25 @@ class HumanResourcesSeeder extends Seeder
         DB::table('department')->insert([
             [
                 'name' => 'HR', 
-                'description' => 'Human Resources'
-            ]
+                'description' => 'Departemen Human Resources',
+                'status' => 'active',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'IT', 
+                'description' => 'Departemen Information Technology',
+                'status' => 'active',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'name' => 'EDU', 
+                'description' => 'Departemen Education',
+                'status' => 'active',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ]);
     }
 }
