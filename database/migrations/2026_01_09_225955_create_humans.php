@@ -81,10 +81,9 @@ return new class extends Migration
         Schema::create('leave_requests', function (Blueprint $table) {
             $table->id();
             $table->foreignId('employee_id')->constrained('employees');
-            $table->date('check_in');
-            $table->date('check_out');
-            $table->date('date');
-            $table->string('status');
+            $table->string('leave_type');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->softDeletes();
             $table->timestamps();
         });
