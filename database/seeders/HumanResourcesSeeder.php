@@ -122,11 +122,25 @@ class HumanResourcesSeeder extends Seeder
         
         DB::table('payroll')->insert([
             [
-                'employee_id' => $faker->sentence(3), 
-                'description' => $faker->paragraph,
-                'assigned_to' => 1,
-                'due_date' => Carbon::parse('2025-02-28'),
-                'status' => 'pending',
+                'employee_id' => 1, 
+                'salary' => $faker->randomFloat(2, 3000, 6000),
+                'bonuses' => $faker->randomFloat(2, 3000, 6000),
+                'deductions' => $faker->randomFloat(2, 500, 1000),
+                'net_salary' => $faker->randomFloat(2, 3000, 6000),
+                'pay_date' => Carbon::parse('2025-02-28'),,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ]);
+        
+        DB::table('presences')->insert([
+            [
+                'employee_id' => 1, 
+                'salary' => $faker->randomFloat(2, 3000, 6000),
+                'bonuses' => $faker->randomFloat(2, 3000, 6000),
+                'deductions' => $faker->randomFloat(2, 500, 1000),
+                'net_salary' => $faker->randomFloat(2, 3000, 6000),
+                'pay_date' => Carbon::parse('2025-02-28'),,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
