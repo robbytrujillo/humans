@@ -18,7 +18,7 @@ class HumanResourcesSeeder extends Seeder
         //
         $faker = Faker::create();
 
-        DB::table('department')->insert([
+        DB::table('departments')->insert([
             [
                 'name' => 'HR', 
                 'description' => 'Departemen Human Resources',
@@ -34,9 +34,99 @@ class HumanResourcesSeeder extends Seeder
                 'updated_at' => Carbon::now(),
             ],
             [
-                'name' => 'EDU', 
+                'name' => 'Education', 
                 'description' => 'Departemen Education',
                 'status' => 'active',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ]);
+        
+        DB::table('roles')->insert([
+            [
+                'title' => 'HR', 
+                'description' => 'Handling Team',
+                'status' => 'active',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'title' => 'IT Support', 
+                'description' => 'IT Support Helpdesk',
+                'status' => 'active',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'title' => 'Education', 
+                'description' => 'Departemen Education',
+                'status' => 'active',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ]);
+
+        DB::table('employees')->insert([
+            [
+                'fullname' => $faker->name, 
+                'email' => $faker->unique()->safeEmail,
+                'phone_number' => $faker->phoneNumber,
+                'address' => $faker->address,
+                'birth_date' => $faker->dateTimeBetween('-40 years', '-20 years'),
+                'hire_date' => Carbon::now(),
+                'department_id' => 1,
+                'role_id' => 1,
+                'status' => 'active',
+                'salary' => $faker->randomFloat(2, 3000, 6000),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+            ],
+            [
+                'fullname' => $faker->name, 
+                'email' => $faker->unique()->safeEmail,
+                'phone_number' => $faker->phoneNumber,
+                'address' => $faker->address,
+                'birth_date' => $faker->dateTimeBetween('-40 years', '-20 years'),
+                'hire_date' => Carbon::now(),
+                'department_id' => 1,
+                'role_id' => 1,
+                'status' => 'active',
+                'salary' => $faker->randomFloat(2, 3000, 6000),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+                'deleted_at' => null,
+            ],
+        ]);
+
+        DB::table('tasks')->insert([
+            [
+                'title' => $faker->sentence(3), 
+                'description' => $faker->paragraph,
+                'assigned_to' => 1,
+                'due_date' => Carbon::parse('2025-02-28'),
+                'status' => 'pending',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'title' => $faker->sentence(3), 
+                'description' => $faker->paragraph,
+                'assigned_to' => 1,
+                'due_date' => Carbon::parse('2025-02-28'),
+                'status' => 'pending',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ]);
+        
+        DB::table('payroll')->insert([
+            [
+                'employee_id' => $faker->sentence(3), 
+                'description' => $faker->paragraph,
+                'assigned_to' => 1,
+                'due_date' => Carbon::parse('2025-02-28'),
+                'status' => 'pending',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
