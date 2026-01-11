@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Faker\Factory as Faker;
+use Illuminate\Support\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
-use Carbon\Carbon;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
 
 class HumanResourcesSeeder extends Seeder
 {
@@ -46,21 +47,18 @@ class HumanResourcesSeeder extends Seeder
             [
                 'title' => 'HR', 
                 'description' => 'Handling Team',
-                'status' => 'active',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'title' => 'IT Support', 
                 'description' => 'IT Support Helpdesk',
-                'status' => 'active',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
                 'title' => 'Education', 
                 'description' => 'Departemen Education',
-                'status' => 'active',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -127,7 +125,17 @@ class HumanResourcesSeeder extends Seeder
                 'bonuses' => $faker->randomFloat(2, 3000, 6000),
                 'deductions' => $faker->randomFloat(2, 500, 1000),
                 'net_salary' => $faker->randomFloat(2, 3000, 6000),
-                'pay_date' => Carbon::parse('2026-01-13'),,
+                'pay_date' => Carbon::parse('2026-01-13'),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'employee_id' => 2, 
+                'salary' => $faker->randomFloat(2, 3000, 6000),
+                'bonuses' => $faker->randomFloat(2, 3000, 6000),
+                'deductions' => $faker->randomFloat(2, 500, 1000),
+                'net_salary' => $faker->randomFloat(2, 3000, 6000),
+                'pay_date' => Carbon::parse('2026-01-13'),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
@@ -149,6 +157,27 @@ class HumanResourcesSeeder extends Seeder
                 'check_out' => $faker->Carbon::parse('2026-02-10 16:00:00'),
                 'date' => Carbon::parse('2026-01-13'),
                 'status' => 'present',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+        ]);
+        
+        DB::table('leave_requests')->insert([
+            [
+                'employee_id' => 1,
+                'leave_type' => 'Sick Leave', 
+                'start_date' => $faker->Carbon::parse('2026-02-14'),
+                'end_date' => $faker->Carbon::parse('2026-02-16'),
+                'status' => 'pending',
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'employee_id' => 2,
+                'leave_type' => 'Vacation', 
+                'start_date' => $faker->Carbon::parse('2026-02-15'),
+                'end_date' => $faker->Carbon::parse('2026-02-18'),
+                'status' => 'pending',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
