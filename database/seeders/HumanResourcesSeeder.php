@@ -144,8 +144,8 @@ class HumanResourcesSeeder extends Seeder
         DB::table('presences')->insert([
             [
                 'employee_id' => 1, 
-                'check_id' => $faker->Carbon::parse('2026-02-10 07:00:00'),
-                'check_out' => $faker->Carbon::parse('2026-02-10 16:00:00'),
+                'check_in' => Carbon::parse('2026-02-10 07:00:00'),
+                'check_out' => Carbon::parse('2026-02-10 16:00:00'),
                 'date' => Carbon::parse('2026-01-13'),
                 'status' => 'present',
                 'created_at' => Carbon::now(),
@@ -153,8 +153,8 @@ class HumanResourcesSeeder extends Seeder
             ],
             [
                 'employee_id' => 2, 
-                'check_id' => $faker->Carbon::parse('2026-02-10 07:00:00'),
-                'check_out' => $faker->Carbon::parse('2026-02-10 16:00:00'),
+                'check_in' => Carbon::parse('2026-02-10 07:00:00'),
+                'check_out' => Carbon::parse('2026-02-10 16:00:00'),
                 'date' => Carbon::parse('2026-01-13'),
                 'status' => 'present',
                 'created_at' => Carbon::now(),
@@ -166,8 +166,8 @@ class HumanResourcesSeeder extends Seeder
             [
                 'employee_id' => 1,
                 'leave_type' => 'Sick Leave', 
-                'start_date' => $faker->Carbon::parse('2026-02-14'),
-                'end_date' => $faker->Carbon::parse('2026-02-16'),
+                'start_date' => Carbon::parse('2026-02-14'),
+                'end_date' => Carbon::parse('2026-02-16'),
                 'status' => 'pending',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
@@ -175,8 +175,8 @@ class HumanResourcesSeeder extends Seeder
             [
                 'employee_id' => 2,
                 'leave_type' => 'Vacation', 
-                'start_date' => $faker->Carbon::parse('2026-02-15'),
-                'end_date' => $faker->Carbon::parse('2026-02-18'),
+                'start_date' => Carbon::parse('2026-02-15'),
+                'end_date' => Carbon::parse('2026-02-18'),
                 'status' => 'pending',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
