@@ -20,7 +20,7 @@
                 <div class="sidebar-header position-relative">
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="logo">
-                            <a href="index.html"><img src="{{ asset('mazer/dist/assets/compiled/svg/logo.svg') }}" alt="Logo" srcset=""></a>
+                            <a href="index.html"><img src="{{ asset('mazer/dist/assets/compiled/svg/humans-logo.svg') }}" alt="Logo" srcset=""></a>
                         </div>
                         <div class="gap-2 mt-2 theme-toggle d-flex align-items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true"
@@ -971,11 +971,15 @@
             <footer>
                 <div class="clearfix mb-0 footer text-muted">
                     <div class="float-start">
-                        <p>2023 &copy; Mazer</p>
+                        <p>
+                            <script type="text/javascript">
+                                document.write(new Date().getFullYear());
+                            </script> &copy; Humans
+                        </p>
                     </div>
                     <div class="float-end">
                         <p>Crafted with <span class="text-danger"><i class="bi bi-heart-fill icon-mid"></i></span>
-                            by <a href="https://saugi.me">Saugi</a></p>
+                            by <a href="https://robbyilham.com">Robby</a></p>
                     </div>
                 </div>
             </footer>
