@@ -12,14 +12,15 @@
         <div class="page-title">
             <div class="row">
                 <div class="order-last col-12 col-md-6 order-md-1">
-                    <h3>DataTable</h3>
-                    <p class="text-subtitle text-muted">A sortable, searchable, paginated table without dependencies thanks to simple-datatables.</p>
+                    <h3>Tasks</h3>
+                    <p class="text-subtitle text-muted">Handle Employee Task</p>
                 </div>
                 <div class="order-first col-12 col-md-6 order-md-2">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">DataTable</li>
+                            <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Task</li>
+                            <li class="breadcrumb-item active" aria-current="page">Index</li>
                         </ol>
                     </nav>
                 </div>
@@ -30,7 +31,7 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">
-                        Simple Datatable
+                        Data
                     </h5>
                 </div>
                 <div class="card-body">
@@ -64,6 +65,8 @@
                                         <a href="" class="btn btn-info btn-sm">View</a>
                                         <a href="" class="btn btn-success btn-sm">Done</a>
                                         <a href="" class="btn btn-warning btn-sm">Pending</a>
+                                        <a href="" class="btn btn-secondary btn-sm">Edit</a>
+                                        <a href="" class="btn btn-danger btn-sm">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
