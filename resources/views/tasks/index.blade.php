@@ -34,6 +34,11 @@
                     </h5>
                 </div>
                 <div class="card-body">
+
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-primary mb-3 ms-auto">New Task</a>
+                    </div>
+
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
