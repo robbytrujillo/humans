@@ -58,13 +58,28 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $task->title }}</td>
                                     {{--  <td>{{ $task->description }}</td>  --}}
-                                    <td>{{ $task->assigned_to }}</td>
+                                    <td>{{ $task->employee->fullname }}</td>
                                     <td>{{ $task->due_date }}</td>
-                                    <td>{{ $task->status }}</td>
+                                    <td>
+
+                                        @if ($task->status == 'pending')
+                                            <span class="text-warning">Pending</span>
+                                        @elseif ($task->status == 'done')
+                                            <span class="text-success">Done</span>
+                                        @else
+                                            <span class="text-success">{{ $task->status }}</span>
+                                        @endif
+
+                                    </td>
                                     <td>
                                         <a href="" class="btn btn-info btn-sm">View</a>
-                                        <a href="" class="btn btn-success btn-sm">Done</a>
-                                        <a href="" class="btn btn-warning btn-sm">Pending</a>
+
+                                        @if ($task->status == 'pending')
+                                            <a href="" class="btn btn-success btn-sm">Done</a>
+                                        @else
+                                            <a href="" class="btn btn-warning btn-sm">Pending</a>
+                                        @endif
+                                        
                                         <a href="" class="btn btn-secondary btn-sm">Edit</a>
                                         <a href="" class="btn btn-danger btn-sm">Delete</a>
                                     </td>

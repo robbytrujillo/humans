@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Task;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Employee extends Model
 {
@@ -18,9 +19,13 @@ class Employee extends Model
         'address',
         'birth_date',
         'hire_date',
-        'departement_id',
+        'department_id',
         'role_id',
         'status',
         'salary',
     ];
+    
+    public function tasks() {
+        return $this->hasMany(Task::class);
+    }
 }

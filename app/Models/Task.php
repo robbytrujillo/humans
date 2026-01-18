@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Employee;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Task extends Model
 {
@@ -18,4 +19,8 @@ class Task extends Model
         'due_date',
         'status'
     ];
+
+    public function employee() {
+        return $this->belongsTo(Employee::class, 'assigned_to');
+    }
 }
