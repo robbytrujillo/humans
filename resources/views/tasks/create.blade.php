@@ -57,9 +57,16 @@
                             @enderror
                         </div>
                         <div class="mb-b">
-                            <label class="form-label">Due date</label>
-                            <select name="status" id="">
-
+                            <label class="form-label">Status</label>
+                            <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+                            </select>
+                            @error('status')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-b">
+                            <label class="form-label">Status</label>
+                            <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
                             </select>
                             @error('status')
                                 <div class="invalid-feedback">{{ $message }}</div>
