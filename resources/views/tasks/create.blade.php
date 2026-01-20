@@ -69,7 +69,7 @@
                         </div>
                         <div class="mb-b">
                             <label class="form-label">Description</label>
-                            <select name="description" id="description" class="form-control @error('description') is-invalid @enderror">
+                            <textarea name="description" id="description"></textarea>
                             </select>
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
