@@ -53,9 +53,10 @@
                         <div class="mb-b">
                             <label class="form-label">Employee</label>
                             <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
-                                <option value="done">Done</option>
-                                <option value="pending">Pending</option>
-                                <option value="on-progress">On Progress</option>
+                                @foreach ($employees as $employee)
+                                    <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
+                                @endforeach
+                                
                             </select>
                             @error('status')
                                 <div class="invalid-feedback">{{ $message }}</div>
