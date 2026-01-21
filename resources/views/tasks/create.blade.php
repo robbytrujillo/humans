@@ -39,60 +39,63 @@
                     <div class="d-flex">
                         <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3 ms-auto">New Task</a>
                     </div>
-
-                    <form method="POST" action="{{ route('tasks.store') }}" class="">
-                    @csrf
-                        <div class="mb-b">
-                            <label class="form-label">Title</label>
-                            <input type="text" class="form-control" name="title" required>
-                            @error('title')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-b">
-                            <label class="form-label">Employee</label>
-                            <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
-                                @foreach ($employees as $employee)
-                                    <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
-                                @endforeach
-                                
-                            </select>
-                            @error('status')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-b">
-                            <label class="form-label">Due date</label>
-                            <input type="datetime-local" class="form-control @error('due_date') is-invalid @enderror" value="{{ @old('due_date') }}" name="due_date" required>
-                            @error('due_date')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-b">
-                            <label class="form-label">Status</label>
-                            <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                <option value="done">Done</option>
-                                <option value="pending">Pending</option>
-                                <option value="on-progress">On Progress</option>
-                            </select>
-                            @error('status')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-b">
-                            <label class="form-label">Description</label>
-                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"></textarea>
-                            </select>
-                            @error('description')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                    </form>
+                    <div class="container">
+                        <form method="POST" action="{{ route('tasks.store') }}" >
+                        @csrf
+                            <div class="mb-2">
+                                <label class="form-label">Title</label>
+                                <input type="text" class="form-control" name="title" required>
+                                @error('title')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+    
+                            <div class="mb-2">
+                                <label class="form-label">Employee</label>
+                                <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
+                                    <option value="">Select an employee</option>
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
+                                    @endforeach
+                                    
+                                </select>
+                                @error('assigned_to')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+    
+                            <div class="mb-2">
+                                <label class="form-label">Due date</label>
+                                <input type="datetime-local" class="form-control @error('due_date') is-invalid @enderror" value="{{ @old('due_date') }}" name="due_date" required>
+                                @error('due_date')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+    
+                            <div class="mb-2">
+                                <label class="form-label">Status</label>
+                                <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
+                                    <option value="done">Done</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="on-progress">On Progress</option>
+                                </select>
+                                @error('status')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+    
+                            <div class="mb-2">
+                                <label class="form-label">Description</label>
+                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"></textarea>
+                                </select>
+                                @error('description')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+    
+                            <button type="submit" class="rounded-pill btn btn-primary btn-sm">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
 
