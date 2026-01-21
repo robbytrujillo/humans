@@ -49,6 +49,19 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <div class="mb-b">
+                            <label class="form-label">Employee</label>
+                            <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
+                                <option value="done">Done</option>
+                                <option value="pending">Pending</option>
+                                <option value="on-progress">On Progress</option>
+                            </select>
+                            @error('status')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <div class="mb-b">
                             <label class="form-label">Due date</label>
                             <input type="datetime-local" class="form-control @error('due_date') is-invalid @enderror" value="{{ @old('due_date') }}" name="due_date" required>
@@ -56,6 +69,7 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="mb-b">
                             <label class="form-label">Status</label>
                             <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
@@ -67,14 +81,16 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                         <div class="mb-b">
                             <label class="form-label">Description</label>
-                            <textarea name="description" id="description"></textarea>
+                            <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"></textarea>
                             </select>
                             @error('description')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+
                     </form>
                 </div>
             </div>
