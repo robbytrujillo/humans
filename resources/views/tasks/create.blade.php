@@ -94,7 +94,7 @@
                             </div>
     
                             <button type="submit" class="rounded-pill btn btn-primary btn-sm">Create Task</button>
-                            <a href="{{ route('tasks.index') }}" class="rounded-pill btn btn-info btn-sm">Back to List</a>
+                            <a href="{{ route('tasks.index') }}" class="rounded-pill btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
                 </div>
