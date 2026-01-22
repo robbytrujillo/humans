@@ -20,4 +20,17 @@ class TaskController extends Controller
         $employees = Employee::all();
         return view('tasks.create', compact('employees'));
     }
+
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'assigned_to' => 'required',
+            'due_date' => 'required|date',
+            'status' => 'required|string',
+        ]);
+
+        // Jika berhasil
+        Task::create($validated);
+    }
 }
