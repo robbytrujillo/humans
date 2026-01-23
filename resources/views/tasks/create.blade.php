@@ -77,7 +77,6 @@
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
                                     <option value="pending">Pending</option>
                                     <option value="on-progress">On Progress</option>
-                                    <option value="done">Done</option>
                                 </select>
                                 @error('status')
                                     <div class="invalid-feedback">{{ $message }}</div>
