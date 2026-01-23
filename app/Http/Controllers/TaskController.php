@@ -32,5 +32,7 @@ class TaskController extends Controller
 
         // Jika berhasil
         Task::create($validated);
+
+        return redirect()->route('tasks.index')->with('success', 'Task created successfully');
     }
 }
