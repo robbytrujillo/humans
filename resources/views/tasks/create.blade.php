@@ -36,9 +36,9 @@
                 </div>
                 <div class="card-body">
 
-                    <div class="d-flex">
+                    {{--  <div class="d-flex">
                         <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3 ms-auto">New Task</a>
-                    </div>
+                    </div>  --}}
                     <div class="container">
                         <form method="POST" action="{{ route('tasks.store') }}" >
                         @csrf
@@ -75,9 +75,9 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="done">Done</option>
                                     <option value="pending">Pending</option>
                                     <option value="on-progress">On Progress</option>
+                                    <option value="done">Done</option>
                                 </select>
                                 @error('status')
                                     <div class="invalid-feedback">{{ $message }}</div>
