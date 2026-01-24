@@ -170,9 +170,12 @@
 
     {{--  Dibutuhkan untuk date  --}}
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    {{--  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>  --}}
     <script>
-        let date = flatpickr('.flatpickr');
+        let dateTime = flatpickr('.datetime', {
+            dateFormat = "Y-m-d",
+            enableTime = true,
+        });
     </script>
 </body>
 

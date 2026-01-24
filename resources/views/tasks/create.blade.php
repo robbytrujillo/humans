@@ -37,7 +37,7 @@
                 <div class="card-body">
 
                     {{--  <div class="d-flex">
-                        <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3 ms-auto">New Task</a>
+                        <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">New Task</a>
                     </div>  --}}
                     <div class="container">
                         <form method="POST" action="{{ route('tasks.store') }}" >
@@ -66,7 +66,7 @@
     
                             <div class="mb-2">
                                 <label class="form-label">Due date</label>
-                                <input type="datetime-local" class="form-control @error('due_date') is-invalid @enderror" value="{{ @old('due_date') }}" name="due_date" required>
+                                <input type="datetime-local" class="form-control datetime @error('due_date') is-invalid @enderror" value="{{ @old('due_date') }}" name="due_date" required>
                                 @error('due_date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
