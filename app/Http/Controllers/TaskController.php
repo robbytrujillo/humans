@@ -39,6 +39,6 @@ class TaskController extends Controller
     public function edit(Task $task) {
         $employees = Employee::all();
 
-        return view('tasks.edit', compact($task, $employees));
+        return view('tasks.edit', compact('task', 'employees'));
     }
 }
