@@ -44,11 +44,13 @@
                         <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">New Task</a>
                     </div>  --}}
                     <div class="container">
-                        <form method="POST" action="{{ route('tasks.update') }}" >
-                        @csrf
+                        <form method="POST" action="{{ route('tasks.update', $task->id) }}" >
+                            @csrf
+                            @method('PUT')
+
                             <div class="mb-2">
                                 <label class="form-label">Title</label>
-                                <input type="text" class="form-control" name="title" required>
+                                <input type="text" class="form-control" name="title" value="{{ old('title', $task->title)}}" required>
                                 @error('title')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -59,7 +61,7 @@
                                 <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
                                     <option value="">Select an employee</option>
                                     @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
+                                        <option value="{{ $employee->id }}" @if(old('assigned_to', $task->assigned_to) == $employee->id) selected @endif >{{ $employee->fullname }}</option>
                                     @endforeach
                                     
                                 </select>
@@ -70,7 +72,7 @@
     
                             <div class="mb-2">
                                 <label class="form-label">Due date</label>
-                                <input type="datetime-local" class="form-control date @error('due_date') is-invalid @enderror" value="{{ @old('due_date') }}" name="due_date" required>
+                                <input type="datetime-local" class="form-control date @error('due_date') is-invalid @enderror" value="{{ @old('due_date', $task->due_date) }}" name="due_date" required>
                                 @error('due_date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -79,8 +81,11 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="pending">Pending</option>
-                                    <option value="on-progress">On Progress</option>
+                                    
+                                    {{--  <option value="pending" @if('status', $task->status == 'pending') selected  @endif>Pending</option>  --}}
+                                    <option value="pending" {{ old('status', $task->status) == 'pending' ? 'selected' : '' }}>Pending</option>
+                                    {{--  <option value="on-progress" @if('status', $task->status == 'on-progress') selected  @endif>On Progress</option>  --}}
+                                    <option value="on-progress" {{ old('status', $task->status) == 'on-progress' ? 'selected' : '' }}>On Progress</option>
                                 </select>
                                 @error('status')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -89,14 +94,14 @@
     
                             <div class="mb-2">
                                 <label class="form-label">Description</label>
-                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"></textarea>
+                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('title', $task->description) }}</textarea>
                                 </select>
                                 @error('description')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
     
-                            <button type="submit" class="rounded-pill btn btn-primary btn-sm">Create Task</button>
+                            <button type="submit" class="rounded-pill btn btn-primary btn-sm">Update Task</button>
                             <a href="{{ route('tasks.index') }}" class="rounded-pill btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
