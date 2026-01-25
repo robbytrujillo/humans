@@ -85,11 +85,11 @@
                                         </a>
 
                                         @if ($task->status == 'pending')
-                                            <a href="" class="btn btn-success btn-sm">
+                                            <a href="{{ route('tasks.done', $task->id) }}" class="btn btn-success btn-sm">
                                                 <i class="fa-solid fa-check"></i> Done
                                             </a>
                                         @else
-                                            <a href="" class="btn btn-warning btn-sm">
+                                            <a href="{{ route('tasks.pending', $task->id) }}" class="btn btn-warning btn-sm">
                                                 <i class="fa-solid fa-clock"></i> Pending
                                             </a>
                                         @endif
