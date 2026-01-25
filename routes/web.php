@@ -15,7 +15,13 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// Handle Tasks
 Route::resource('/tasks', TaskController::class);
+
+// Handle tasks done and pending
+Route::get('/tasks/done/{id}', [TaskController::class, 'done'])->name('tasks.done');
+Route::get('/tasks/pending/{id}', [TaskController::class, 'pending'])->name('tasks.pending');
 
 // Route::get('/dashboard', [DashboardController::class, 'index']->name('dashboard'));
 
