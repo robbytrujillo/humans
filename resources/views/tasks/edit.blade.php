@@ -72,7 +72,7 @@
     
                             <div class="mb-2">
                                 <label class="form-label">Due date</label>
-                                <input type="datetime-local" class="form-control date @error('due_date') is-invalid @enderror" value="{{ @old('due_date', $task->due_date) }}" name="due_date" required>
+                                <input type="date" class="form-control date @error('due_date') is-invalid @enderror" value="{{ @old('due_date', $task->due_date) }}" name="due_date" required>
                                 @error('due_date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
