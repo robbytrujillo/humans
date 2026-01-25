@@ -15,6 +15,14 @@
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/extensions/table-datatables.css') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    {{--  Font Awesome  --}}
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
 </head>
 
 <body>

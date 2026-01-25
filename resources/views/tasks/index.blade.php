@@ -37,11 +37,13 @@
                 <div class="card-body">
 
                     <div class="d-flex">
-                        <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3 ms-auto">New Task</a>
+                        <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3 ms-auto">
+                            <i class="fa-solid fa-folder-plus"></i> New Task
+                        </a>
                     </div>
 
                     @if (session('success'))
-                        <div class="alert alert success">
+                        <div class="alert alert-success">
                             {{ session('success') }}
                         </div>
                     @endif
@@ -78,16 +80,33 @@
 
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-info btn-sm">View</a>
+                                        <a href="" class="btn btn-info btn-sm">
+                                            <i class="fa-solid fa-eye"></i> View
+                                        </a>
 
                                         @if ($task->status == 'pending')
-                                            <a href="" class="btn btn-success btn-sm">Done</a>
+                                            <a href="" class="btn btn-success btn-sm">
+                                                <i class="fa-solid fa-check"></i> Done
+                                            </a>
                                         @else
-                                            <a href="" class="btn btn-warning btn-sm">Pending</a>
+                                            <a href="" class="btn btn-warning btn-sm">
+                                                <i class="fa-solid fa-clock"></i> Pending
+                                            </a>
                                         @endif
 
-                                        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-secondary btn-sm">Edit</a>
-                                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-secondary btn-sm">
+                                            <i class="fa-solid fa-pen"></i> Edit
+                                        </a>
+                                        {{--  <a href="" class="btn btn-danger btn-sm">Delete</a>  --}}
+
+                                        <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" style="display: inline">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <button type="submit" class="btn btn-danger btn-sm">
+                                                <i class="fa-solid fa-trash"></i> Delete
+                                            </button>    
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
