@@ -80,7 +80,7 @@
 
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-info btn-sm">
+                                        <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info btn-sm">
                                             <i class="fa-solid fa-eye"></i> View
                                         </a>
 
