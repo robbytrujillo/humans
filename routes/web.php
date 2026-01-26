@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Handle Employees
-Route::rescource('/employees', EmployeeController::class);
+Route::resource('/employees', EmployeeController::class);
 
 // Handle Tasks
 Route::resource('/tasks', TaskController::class);
