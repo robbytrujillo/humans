@@ -51,16 +51,6 @@
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
-                                'fullname',
-        'email',
-        'phone_number',
-        'address',
-        'birth_date',
-        'hire_date',
-        'department_id',
-        'role_id',
-        'status',
-        'salary',
 
                                 <th>No</th>
                                 <th>Fullname</th>
@@ -90,16 +80,13 @@
                                     <td>{{ $employee->role_id }}</td>
                                    
                                     <td>
-
-                                        @if ($employee->status == 'pending')
-                                            <span class="text-warning">Pending</span>
-                                        @elseif ($employee->status == 'done')
-                                            <span class="text-success">Done</span>
-                                        @else
+                                        @if ($employee->status == 'active')
                                             <span class="text-success">{{ $employee->status }}</span>
+                                        @elseif ($employee->status == 'done')
+                                            <span class="text-trash">Done</span>
                                         @endif
-
                                     </td>
+                                    
                                      <td>{{ $employee->salary }}</td>
                                     <td>
                                         <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-info btn-sm">
