@@ -80,10 +80,15 @@
                             @foreach ($employees as $employee)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $employee->title }}</td>
-                                    {{--  <td>{{ $employee->description }}</td>  --}}
-                                    <td>{{ $employee->employee->fullname }}</td>
-                                    <td>{{ $employee->due_date }}</td>
+                                    <td>{{ $employee->fullname }}</td>
+                                    <td>{{ $employee->email }}</td>
+                                    <td>{{ $employee->phone_number }}</td>
+                                    <td>{{ $employee->address }}</td>
+                                    <td>{{ $employee->birth_date }}</td>
+                                    <td>{{ $employee->hire_date }}</td>
+                                    <td>{{ $employee->department_id }}</td>
+                                    <td>{{ $employee->role_id }}</td>
+                                   
                                     <td>
 
                                         @if ($employee->status == 'pending')
@@ -95,6 +100,7 @@
                                         @endif
 
                                     </td>
+                                     <td>{{ $employee->salary }}</td>
                                     <td>
                                         <a href="{{ route('employees.show', $employee->id) }}" class="btn btn-info btn-sm">
                                             <i class="fa-solid fa-eye"></i> View
