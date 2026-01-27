@@ -82,8 +82,8 @@
                                     <td>
                                         @if ($employee->status == 'active')
                                             <span class="text-success">{{ $employee->status }}</span>
-                                        @elseif ($employee->status == 'done')
-                                            <span class="text-trash">Done</span>
+                                        @else
+                                            <span class="text-warning">{{ $employee->status }}</span>
                                         @endif
                                     </td>
                                     
@@ -93,7 +93,7 @@
                                             <i class="fa-solid fa-eye"></i> View
                                         </a>
 
-                                        @if ($employee->status == 'pending')
+                                        {{--  @if ($employee->status == 'pending')
                                             <a href="{{ route('employees.done', $employee->id) }}" class="btn btn-success btn-sm">
                                                 <i class="fa-solid fa-check"></i> Done
                                             </a>
@@ -101,7 +101,7 @@
                                             <a href="{{ route('employees.pending', $employee->id) }}" class="btn btn-warning btn-sm">
                                                 <i class="fa-solid fa-clock"></i> Pending
                                             </a>
-                                        @endif
+                                        @endif  --}}
 
                                         <a href="{{ route('employees.edit', $employee->id) }}" class="btn btn-secondary btn-sm">
                                             <i class="fa-solid fa-pen"></i> Edit
