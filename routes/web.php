@@ -1,10 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TaskController;
-use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepartmentController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
@@ -19,6 +21,12 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 
 // Handle Employees
 Route::resource('/employees', EmployeeController::class);
+
+// Handle Role
+Route::resource('/roles', RoleController::class);
+
+// Handle Department
+Route::resource('/departments', DepartmentController::class);
 
 // Handle Tasks
 Route::resource('/tasks', TaskController::class);
