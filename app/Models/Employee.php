@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Role;
 use App\Models\Task;
 use App\Models\Department;
 use Illuminate\Database\Eloquent\Model;
