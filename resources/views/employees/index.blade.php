@@ -55,7 +55,7 @@
                                 <th>No</th>
                                 <th>Fullname</th>
                                 <th>Email</th>
-                                <th>Phone</th>
+                                <th>Phone Number</th>
                                 <th>Address</th>
                                 <th>Birth Date</th>
                                 <th>Hire Date</th>
