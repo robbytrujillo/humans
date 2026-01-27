@@ -55,10 +55,6 @@
                                 <th>No</th>
                                 <th>Fullname</th>
                                 <th>Email</th>
-                                <th>Phone Number</th>
-                                <th>Address</th>
-                                <th>Birth Date</th>
-                                <th>Hire Date</th>
                                 <th>Department</th>
                                 <th>Role</th>
                                 <th>Status</th>
@@ -72,12 +68,8 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $employee->fullname }}</td>
                                     <td>{{ $employee->email }}</td>
-                                    <td>{{ $employee->phone_number }}</td>
-                                    <td>{{ $employee->address }}</td>
-                                    <td>{{ $employee->birth_date }}</td>
-                                    <td>{{ $employee->hire_date }}</td>
-                                    <td>{{ $employee->department_id }}</td>
-                                    <td>{{ $employee->role_id }}</td>
+                                    <td>{{ $employee->department->name }}</td>
+                                    <td>{{ $employee->role->title }}</td>
                                    
                                     <td>
                                         @if ($employee->status == 'active')
@@ -112,7 +104,7 @@
                                             @csrf
                                             @method('DELETE')
 
-                                            <button type="submit" class="btn btn-danger btn-sm">
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">
                                                 <i class="fa-solid fa-trash"></i> Delete
                                             </button>    
                                         </form>
