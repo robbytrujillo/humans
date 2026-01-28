@@ -17,6 +17,7 @@ class EmployeeController extends Controller
 
     public function create() {
         $departments = Department::all();
+        
         return view('employees.create', compact('departments'));
     }
 }
