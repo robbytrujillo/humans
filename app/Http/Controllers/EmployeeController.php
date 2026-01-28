@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\Employee;
 use App\Models\Department;
 use Illuminate\Http\Request;
@@ -17,7 +18,8 @@ class EmployeeController extends Controller
 
     public function create() {
         $departments = Department::all();
-        
-        return view('employees.create', compact('departments'));
+        $roles = Role::all();
+
+        return view('employees.create', compact('departments', 'roles'));
     }
 }
