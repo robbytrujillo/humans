@@ -93,14 +93,14 @@
 
                              <div class="mb-2">
                                 <label class="form-label">Department</label>
-                                <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
+                                <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
                                     <option value="">Select an employee</option>
                                     @foreach ($employees as $employee)
                                         <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
                                     @endforeach
                                     
                                 </select>
-                                @error('assigned_to')
+                                @error('department_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
