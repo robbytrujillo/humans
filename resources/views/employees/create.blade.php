@@ -75,20 +75,6 @@
                                 @enderror
                             </div>
     
-                            {{--  <div class="mb-2">
-                                <label class="form-label">Employee</label>
-                                <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
-                                    <option value="">Select an employee</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
-                                    @endforeach
-                                    
-                                </select>
-                                @error('assigned_to')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>  --}}
-    
                             <div class="mb-2">
                                 <label class="form-label">Birth date</label>
                                 <input type="datetime-local" class="form-control date @error('birth_date') is-invalid @enderror" value="{{ @old('birth_date') }}" name="birth_date" required>
@@ -101,6 +87,20 @@
                                 <label class="form-label">Hire date</label>
                                 <input type="datetime-local" class="form-control date @error('hire_date') is-invalid @enderror" value="{{ @old('hire_date') }}" name="hire_date" required>
                                 @error('hire_date')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                             <div class="mb-2">
+                                <label class="form-label">Department</label>
+                                <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
+                                    <option value="">Select an employee</option>
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
+                                    @endforeach
+                                    
+                                </select>
+                                @error('assigned_to')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
