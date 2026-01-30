@@ -24,17 +24,17 @@ class EmployeeController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validated([
+        $request->validate([
             'fullname' => 'required|string|max:255',
             'email' => 'required|email',
-            'phone_number' => 'required',
-            'address' => 'required',
-            'birth_date' => 'required',
-            'hire_date' => 'required',
+            'phone_number' => 'required|string|max:15',
+            'address' => 'nullable|required|string|255',
+            'birth_date' => 'required|date',
+            'hire_date' => 'required|date',
             'department_id' => 'required',
             'role_id' => 'required',
-            'status' => 'required',
-            'salary' => 'required',
+            'status' => 'required|string',
+            'salary' => 'required|numeric',
         ]);
 
         Employee::create($request->all());
