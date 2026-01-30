@@ -94,9 +94,9 @@
                              <div class="mb-2">
                                 <label class="form-label">Department</label>
                                 <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
-                                    <option value="">Select an employee</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}">{{ $employee->fullname }}</option>
+                                    <option value="">Select an department</option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
                                     
                                 </select>
