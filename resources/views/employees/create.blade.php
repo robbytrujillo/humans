@@ -94,13 +94,27 @@
                              <div class="mb-2">
                                 <label class="form-label">Department</label>
                                 <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
-                                    <option value="">Select an department</option>
+                                    <option value="">--Select an department--</option>
                                     @foreach ($departments as $department)
                                         <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
                                     
                                 </select>
                                 @error('department_id')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                             
+                            <div class="mb-2">
+                                <label class="form-label">Role</label>
+                                <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror">
+                                    <option value="">--Select an role--</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}">{{ $role->title }}</option>
+                                    @endforeach
+                                    
+                                </select>
+                                @error('role_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
