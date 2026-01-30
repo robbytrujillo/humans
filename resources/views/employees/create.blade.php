@@ -122,25 +122,24 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="active">Active</option>
-                                    <option value="in-active">Inactive</option>
+                                    <option value="Inactive">Inactive</option>
+                                    <option value="Active">Active</option>
                                 </select>
                                 @error('status')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-    
+
                             <div class="mb-2">
-                                <label class="form-label">Description</label>
-                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"></textarea>
-                                </select>
-                                @error('description')
+                                <label class="form-label">Salary</label>
+                                <input type="number" class="form-control" name="salary" required>
+                                @error('salary')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
     
-                            <button type="submit" class="rounded-pill btn btn-primary btn-sm">Create Task</button>
-                            <a href="{{ route('tasks.index') }}" class="rounded-pill btn btn-secondary btn-sm">Back to List</a>
+                            <button type="submit" class="btn btn-primary btn-sm">Create Employee</button>
+                            <a href="{{ route('employees.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
                 </div>

@@ -22,4 +22,23 @@ class EmployeeController extends Controller
 
         return view('employees.create', compact('departments', 'roles'));
     }
+
+    public function store(Request $request) {
+        $request->validated([
+            'fullname' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone_number' => 'required',
+            'address' => 'required',
+            'birth_date' => 'required',
+            'hire_date' => 'required',
+            'department_id' => 'required',
+            'role_id' => 'required',
+            'status' => 'required',
+            'salary' => 'required',
+        ]);
+
+        Employee::create($request->all());
+
+        return redirect()->route('employees.index')->with('success', 'Employee Created Success');
+    }
 }
