@@ -24,11 +24,11 @@ class EmployeeController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
+        $validated = $request->validate([
             'fullname' => 'required|string|max:255',
             'email' => 'required|email',
             'phone_number' => 'required|string|max:15',
-            'address' => 'nullable|required|string|255',
+            'address' => 'nullable|required|string|max:255',
             'birth_date' => 'required|date',
             'hire_date' => 'required|date',
             'department_id' => 'required',
@@ -37,8 +37,8 @@ class EmployeeController extends Controller
             'salary' => 'required|numeric',
         ]);
 
-        Employee::create($request->all());
+        Employee::create($validated);
 
-        return redirect()->route('employees.index')->with('success', 'Employee Created Success');
+        return redirect()->route('employees.index')->with('success', 'Employee created successfully');
     }
 }

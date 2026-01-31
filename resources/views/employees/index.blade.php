@@ -73,9 +73,9 @@
                                    
                                     <td>
                                         @if ($employee->status == 'active')
-                                            <span class="text-success">{{ $employee->status }}</span>
+                                            <span class="text-success">{{ ucfirst($employee->status) }}</span>
                                         @else
-                                            <span class="text-warning">{{ $employee->status }}</span>
+                                            <span class="text-warning">{{ ucfirst($employee->status) }}</span>
                                         @endif
                                     </td>
                                     

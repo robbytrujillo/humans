@@ -122,8 +122,8 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="Inactive">Inactive</option>
-                                    <option value="Active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="active">Active</option>
                                 </select>
                                 @error('status')
                                     <div class="invalid-feedback">{{ $message }}</div>
