@@ -47,4 +47,12 @@ class EmployeeController extends Controller
 
         return view('employees.show', compact('employee'));
     }
+
+    public function edit($id) {
+        $employee = Employee::find($id);
+        $departments = Department::all();
+        $roles = Role::all();
+
+        return view('employees.edit', compact('employee', 'departments', 'roles'));
+    }
 }
