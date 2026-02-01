@@ -107,7 +107,7 @@
                                 <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
                                     <option value="">--Select an department--</option>
                                     @foreach ($departments as $department)
-                                        <option value="{{ $department->id }}" @if(old('department_id', $employee->department_id) == $department->id) selected @endif>{{ $department->name }}</option>
+                                        <option value="{{ $department->id }}" {{ ($department->id == $employee->department_id) ? 'selected' : '' }}>{{ $department->name }}</option>
                                     @endforeach
                                     
                                 </select>
