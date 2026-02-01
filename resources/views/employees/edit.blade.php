@@ -13,7 +13,7 @@
             <div class="row">
                 <div class="order-last col-12 col-md-6 order-md-1">
                     <h3>Employees</h3>
-                    <p class="text-subtitle text-muted">Handle employee data and profile</p>
+                    <p class="text-subtitle text-muted">Handle employee data or profile</p>
                 </div>
                 <div class="order-first col-12 col-md-6 order-md-2">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -36,44 +36,95 @@
                 </div>
                 <div class="card-body">
 
-                    @if (session('error'))
-                        <div class="alert alert-danger">{{ session('error') }}</div>
-                    @endsession
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                    @endif
 
                     {{--  <div class="d-flex">
                         <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">New Task</a>
                     </div>  --}}
                     <div class="container">
-                        <form method="POST" action="{{ route('tasks.update', $task->id) }}" >
-                            @csrf
-                            @method('PUT')
-
+                        <form method="POST" action="{{ route('employees.update') }}" >
+                        @csrf
                             <div class="mb-2">
-                                <label class="form-label">Title</label>
-                                <input type="text" class="form-control" name="title" value="{{ old('title', $task->title)}}" required>
-                                @error('title')
+                                <label class="form-label">Fullname</label>
+                                <input type="text" class="form-control" name="fullname" value="{{ old('fullname', $employee->fullname) }}" required>
+                                @error('fullname')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="mb-2">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control" name="email" value="{{ old('email', $employee->email) }}" required>
+                                @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
     
                             <div class="mb-2">
-                                <label class="form-label">Employee</label>
-                                <select name="assigned_to" id="assigned_to" class="form-control @error('assigned_to') is-invalid @enderror">
-                                    <option value="">Select an employee</option>
-                                    @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" @if(old('assigned_to', $task->assigned_to) == $employee->id) selected @endif >{{ $employee->fullname }}</option>
+                                <label class="form-label">Phone Number</label>
+                                <input type="text" class="form-control" name="phone_number" value="{{ old('phone_number', $employee->phone_number) }}" required>
+                                @error('phone_number')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                             <div class="mb-2">
+                                <label class="form-label">Address</label>
+                                <textarea name="address" class="form-control @error('address') is-invalid @enderror" id="address">{{ old('address', $employee->address) }}</textarea>
+                                </select>
+                                @error('address')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+    
+                            <div class="mb-2">
+                                <label class="form-label">Birth date</label>
+                                <input type="datetime-local" class="form-control date @error('birth_date') is-invalid @enderror" name="birth_date {{ old('birth_date', $employee->birth_date) }}" required>
+                                @error('birth_date')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="mb-2">
+                                <label class="form-label">Hire date</label>
+                                <input type="datetime-local" class="form-control date @error('hire_date') is-invalid @enderror" name="hire_date {{ old('hire_date', $employee->hire_date) }}" required>
+                                @error('hire_date')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                             <div class="mb-2">
+                                <label class="form-label">Department</label>
+                                <select name="department_id" id="department_id" class="form-control @error('department_id') is-invalid @enderror">
+                                    <option value="">--Select an department--</option>
+                                    @foreach ($departments as $department)
+                                        <option value="{{ $department->id }}" @if(old('department_id', $employee->department_id) == $department->id) selected @endif>{{ $department->name }}</option>
                                     @endforeach
                                     
                                 </select>
-                                @error('assigned_to')
+                                @error('department_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-    
+                             
                             <div class="mb-2">
-                                <label class="form-label">Due date</label>
-                                <input type="date" class="form-control date @error('due_date') is-invalid @enderror" value="{{ @old('due_date', $task->due_date) }}" name="due_date" required>
-                                @error('due_date')
+                                <label class="form-label">Role</label>
+                                <select name="role_id" id="role_id" class="form-control @error('role_id') is-invalid @enderror">
+                                    <option value="">--Select an role--</option>
+                                    @foreach ($roles as $role)
+                                        <option value="{{ $role->id }}" @if(old('role_id', $employee->role_id) == $role->id) selected @endif>{{ $role->title }}</option>
+                                    @endforeach
+                                </select>
+                                @error('role_id')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -81,28 +132,24 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                    
-                                    {{--  <option value="pending" @if('status', $task->status == 'pending') selected  @endif>Pending</option>  --}}
-                                    <option value="pending" {{ old('status', $task->status) == 'pending' ? 'selected' : '' }}>Pending</option>
-                                    {{--  <option value="on-progress" @if('status', $task->status == 'on-progress') selected  @endif>On Progress</option>  --}}
-                                    <option value="on-progress" {{ old('status', $task->status) == 'on-progress' ? 'selected' : '' }}>On Progress</option>
+                                    <option value="inactive" {{ $employee->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                    <option value="active" {{ $employee->status == 'active' ? 'selected' : '' }}>Active</option>
                                 </select>
                                 @error('status')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-    
+
                             <div class="mb-2">
-                                <label class="form-label">Description</label>
-                                <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description">{{ old('title', $task->description) }}</textarea>
-                                </select>
-                                @error('description')
+                                <label class="form-label">Salary</label>
+                                <input type="number" class="form-control" name="salary" required>
+                                @error('salary')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
     
-                            <button type="submit" class="rounded-pill btn btn-primary btn-sm">Update Task</button>
-                            <a href="{{ route('tasks.index') }}" class="rounded-pill btn btn-secondary btn-sm">Back to List</a>
+                            <button type="submit" class="btn btn-primary btn-sm">Create Employee</button>
+                            <a href="{{ route('employees.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
                 </div>
