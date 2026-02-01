@@ -53,6 +53,8 @@
                     <div class="container">
                         <form method="POST" action="{{ route('employees.update', $employee->id) }}" >
                         @csrf
+                        @method('PUT')
+                        
                             <div class="mb-2">
                                 <label class="form-label">Fullname</label>
                                 <input type="text" class="form-control" name="fullname" value="{{ old('fullname', $employee->fullname) }}" required>
