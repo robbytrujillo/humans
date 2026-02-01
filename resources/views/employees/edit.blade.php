@@ -51,7 +51,7 @@
                         <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">New Task</a>
                     </div>  --}}
                     <div class="container">
-                        <form method="POST" action="{{ route('employees.update') }}" >
+                        <form method="POST" action="{{ route('employees.update', $employee->id) }}" >
                         @csrf
                             <div class="mb-2">
                                 <label class="form-label">Fullname</label>
@@ -88,7 +88,7 @@
     
                             <div class="mb-2">
                                 <label class="form-label">Birth date</label>
-                                <input type="datetime-local" class="form-control date @error('birth_date') is-invalid @enderror" name="birth_date {{ old('birth_date', $employee->birth_date) }}" required>
+                                <input type="date" class="form-control date @error('birth_date') is-invalid @enderror" name="birth_date" value="{{ old('birth_date', $employee->birth_date) }}" required>
                                 @error('birth_date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -96,7 +96,7 @@
                             
                             <div class="mb-2">
                                 <label class="form-label">Hire date</label>
-                                <input type="datetime-local" class="form-control date @error('hire_date') is-invalid @enderror" name="hire_date {{ old('hire_date', $employee->hire_date) }}" required>
+                                <input type="date" class="form-control date @error('hire_date') is-invalid @enderror" name="hire_date" value="{{ old('hire_date', $employee->hire_date) }}" required>
                                 @error('hire_date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -142,13 +142,13 @@
 
                             <div class="mb-2">
                                 <label class="form-label">Salary</label>
-                                <input type="number" class="form-control" name="salary" required>
+                                <input type="number" class="form-control" name="salary" value="{{ old('salary', $employee->salary) }}" required>
                                 @error('salary')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
     
-                            <button type="submit" class="btn btn-primary btn-sm">Create Employee</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Update Employee</button>
                             <a href="{{ route('employees.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
