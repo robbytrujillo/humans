@@ -53,10 +53,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
-                                {{--  <th>Description</th>  --}}
-                                <th>Assigned To</th>
-                                <th>Due Date</th>
-                                <th>Status</th>
+                                <th>Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -65,35 +62,8 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $role->title }}</td>
-                                    {{--  <td>{{ $role->description }}</td>  --}}
-                                    <td>{{ $role->employee->fullname }}</td>
-                                    <td>{{ $role->due_date }}</td>
+                                    <td>{{ $role->description }}</td>
                                     <td>
-
-                                        @if ($role->status == 'pending')
-                                            <span class="text-warning">Pending</span>
-                                        @elseif ($role->status == 'done')
-                                            <span class="text-success">Done</span>
-                                        @else
-                                            <span class="text-success">{{ $role->status }}</span>
-                                        @endif
-
-                                    </td>
-                                    <td>
-                                        <a href="{{ route('roles.show', $role->id) }}" class="btn btn-info btn-sm">
-                                            <i class="fa-solid fa-eye"></i> View
-                                        </a>
-
-                                        @if ($role->status == 'pending')
-                                            <a href="{{ route('roles.done', $role->id) }}" class="btn btn-success btn-sm">
-                                                <i class="fa-solid fa-check"></i> Done
-                                            </a>
-                                        @else
-                                            <a href="{{ route('roles.pending', $role->id) }}" class="btn btn-warning btn-sm">
-                                                <i class="fa-solid fa-clock"></i> Pending
-                                            </a>
-                                        @endif
-
                                         <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-secondary btn-sm">
                                             <i class="fa-solid fa-pen"></i> Edit
                                         </a>
