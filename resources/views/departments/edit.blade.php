@@ -64,8 +64,8 @@
                             <div class="mb-2">
                                 <label class="form-label">Status</label>
                                 <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="inactive" {{ $department->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
-                                    <option value="active" {{ $department->status == 'active' ? 'selected' : '' }}>Active</option>
+                                    <option value="inactive" {{ ($department->status == 'inactive') ? 'selected' : '' }}>Inactive</option>
+                                    <option value="active" {{( $department->status == 'active') ? 'selected' : '' }}>Active</option>
                                 </select>
                                 @error('status')
                                     <div class="invalid-feedback">{{ $message }}</div>
