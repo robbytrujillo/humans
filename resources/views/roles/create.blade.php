@@ -59,8 +59,8 @@
                                 @enderror
                             </div>
     
-                            <button type="submit" class="rounded-pill btn btn-primary btn-sm">Create Role</button>
-                            <a href="{{ route('roles.index') }}" class="rounded-pill btn btn-secondary btn-sm">Back to List</a>
+                            <button type="submit" class="btn btn-primary btn-sm">Create Role</button>
+                            <a href="{{ route('roles.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
                 </div>

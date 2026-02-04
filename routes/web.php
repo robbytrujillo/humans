@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -22,14 +23,19 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 // Handle Employees
 Route::resource('/employees', EmployeeController::class);
 
+// Handle Tasks
+Route::resource('/tasks', TaskController::class);
+
 // Handle Role
 Route::resource('/roles', RoleController::class);
 
 // Handle Department
 Route::resource('/departments', DepartmentController::class);
 
-// Handle Tasks
-Route::resource('/tasks', TaskController::class);
+// Handle Presences
+Route::resource('/presences', PresenceController::class);
+
+
 
 // Handle tasks done and pending
 Route::get('/tasks/done/{id}', [TaskController::class, 'done'])->name('tasks.done');
