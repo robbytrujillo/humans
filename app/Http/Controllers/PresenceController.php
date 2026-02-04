@@ -24,8 +24,8 @@ class PresenceController extends Controller
     public function store(Request $request) {
         $validated = $request->validate([
             'employee_id' => 'required|string|max:255',
-            'check_in' => 'required|date',
-            'check_out' => 'required|date',
+            'check_in' => 'required',
+            'check_out' => 'required',
             'date' => 'required|date',
             'status' => 'required|string|max:255',
         ]);
@@ -33,5 +33,11 @@ class PresenceController extends Controller
         Presence::create($validated);
 
         return redirect()->route('presences.index')->with('success', 'Presence recorded successfully');
+    }
+
+    public function edit(Presence $presence) {
+        $employees = Employee::all();
+
+        return view('presences.edit', compact('presence','employees'));
     }
 }

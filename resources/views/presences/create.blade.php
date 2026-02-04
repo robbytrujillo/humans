@@ -66,7 +66,7 @@
     
                             <div class="mb-2">
                                 <label class="form-label">Check In</label>
-                                <input type="datetime-local" class="form-control date @error('check_in') is-invalid @enderror" value="{{ @old('check_in') }}" name="check_in" required>
+                                <input type="date" class="form-control datetime @error('check_in') is-invalid @enderror" value="{{ @old('check_in') }}" name="check_in" required>
                                 @error('check_in')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -74,7 +74,7 @@
 
                             <div class="mb-2">
                                 <label class="form-label">Check Out</label>
-                                <input type="datetime-local" class="form-control date @error('check_out') is-invalid @enderror" value="{{ @old('check_out') }}" name="check_out" required>
+                                <input type="date" class="form-control datetime @error('check_out') is-invalid @enderror" value="{{ @old('check_out') }}" name="check_out" required>
                                 @error('check_out')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -82,7 +82,7 @@
 
                             <div class="mb-2">
                                 <label class="form-label">Date</label>
-                                <input type="datetime-local" class="form-control date @error('date') is-invalid @enderror" value="{{ @old('date') }}" name="date" required>
+                                <input type="date" class="form-control date @error('date') is-invalid @enderror" value="{{ @old('date') }}" name="date" required>
                                 @error('date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

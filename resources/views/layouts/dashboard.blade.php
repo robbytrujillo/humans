@@ -183,6 +183,11 @@
             dateFormat : "Y-m-d",
             {{--  enableTime : true,  --}}
         });
+        
+        let datetime = flatpickr('.datetime', {
+            dateFormat : "Y-m-d H:i:s",
+            enableTime : true,
+        });
     </script>
 </body>
 
