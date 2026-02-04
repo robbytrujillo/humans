@@ -40,4 +40,24 @@ class PresenceController extends Controller
 
         return view('presences.edit', compact('presence','employees'));
     }
+
+    public function update(Request $request, Presence $presence) {
+        $validated = $request->validate([
+            'employee_id' => 'required|string|max:255',
+            'check_in' => 'required',
+            'check_out' => 'required',
+            'date' => 'required|date',
+            'status' => 'required|string|max:255',
+        ]);
+
+        $presence->update($validated);
+
+        return redirect()->route('presences.index')->with('success', 'Presence updated successfully');
+    }
+
+    public function destroy(Presence $presence) {
+        $presence->delete();
+
+        return redirect()->route('presences.index')->with('success', 'Presence deleted successfully');
+    }
 }
