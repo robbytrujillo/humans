@@ -52,8 +52,6 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                {{--  <th>Title</th>  --}}
-                                {{--  <th>Description</th>  --}}
                                 <th>Employee</th>
                                 <th>Check In</th>
                                 <th>Check Out</th>
@@ -66,29 +64,21 @@
                             @foreach ($presences as $presence)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    {{--  <td>{{ $presence->title }}</td>  --}}
-                                    {{--  <td>{{ $presence->description }}</td>  --}}
                                     <td>{{ $presence->employee->fullname }}</td>
                                     <td>{{ $presence->check_in }}</td>
                                     <td>{{ $presence->check_out }}</td>
                                     <td>{{ $presence->date }}</td>
                                     <td>
-
                                         @if ($presence->status == 'present')
                                             <span class="text-success">Present</span>
-                                        @elseif ($presence->status == 'leave')
-                                            <span class="text-warning">Leave</span>
-                                        @elseif ($presence->status == 'absent')
-                                            <span class="text-danger">Absent</span>
+                                        @else
+                                            <span class="text-danger">{{ ucfirst($presence->status) }}</span>
                                         @endif
                                     </td>
                                     <td>
-
-
                                         <a href="{{ route('presences.edit', $presence->id) }}" class="btn btn-secondary btn-sm">
                                             <i class="fa-solid fa-pen"></i> Edit
                                         </a>
-                                        {{--  <a href="" class="btn btn-danger btn-sm">Delete</a>  --}}
 
                                         <form method="POST" action="{{ route('presences.destroy', $presence->id) }}" style="display: inline">
                                             @csrf

@@ -13,4 +13,8 @@ class PresenceController extends Controller
 
         return view('presences.index', compact('presences'));
     }
+
+    public function create() {
+        return view('presences.create');
+    }
 }
