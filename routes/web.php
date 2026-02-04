@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PresenceController;
@@ -35,6 +36,8 @@ Route::resource('/departments', DepartmentController::class);
 // Handle Presences
 Route::resource('/presences', PresenceController::class);
 
+// Handle Payrolls
+Route::resource('/payrolls', PayrollController::class);
 
 
 // Handle tasks done and pending
