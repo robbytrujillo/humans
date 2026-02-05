@@ -66,8 +66,24 @@
     
                             <div class="mb-2">
                                 <label class="form-label">Salary</label>
-                                <input type="text" class="form-control datetime @error('salary') is-invalid @enderror" value="{{ @old('salary') }}" name="salary" required>
+                                <input type="text" class="form-control @error('salary') is-invalid @enderror" value="{{ @old('salary') }}" name="salary" required>
                                 @error('salary')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="mb-2">
+                                <label class="form-label">Bonuses</label>
+                                <input type="text" class="form-control @error('bonuses') is-invalid @enderror" value="{{ @old('bonuses') }}" name="bonuses" required>
+                                @error('bonuses')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            
+                            <div class="mb-2">
+                                <label class="form-label">Deductions</label>
+                                <input type="text" class="form-control @error('deductions') is-invalid @enderror" value="{{ @old('deductions') }}" name="deductions" required>
+                                @error('deductions')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
