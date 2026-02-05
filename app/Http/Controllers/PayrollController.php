@@ -16,6 +16,8 @@ class PayrollController extends Controller
     }
 
     public function create() {
-        return view('payrolls.create');
+        $employees = Employee::all();
+
+        return view('payrolls.create', compact('employees'));
     }
 }

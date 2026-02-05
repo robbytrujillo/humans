@@ -37,7 +37,7 @@
                 <div class="card-body">
 
                     <div class="d-flex">
-                        <a href="{{ route('presences.create') }}" class="btn btn-primary mb-3 ms-auto">
+                        <a href="{{ route('payrolls.create') }}" class="btn btn-primary mb-3 ms-auto">
                             <i class="fa-solid fa-folder-plus"></i> New Payroll
                         </a>
                     </div>
