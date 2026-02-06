@@ -66,7 +66,7 @@
     
                             <div class="mb-2">
                                 <label class="form-label">Salary</label>
-                                <input type="text" class="form-control @error('salary') is-invalid @enderror" value="{{ @old('salary') }}" name="salary" required>
+                                <input type="number" class="form-control @error('salary') is-invalid @enderror" value="{{ @old('salary') }}" name="salary" required>
                                 @error('salary')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -74,7 +74,7 @@
                             
                             <div class="mb-2">
                                 <label class="form-label">Bonuses</label>
-                                <input type="text" class="form-control @error('bonuses') is-invalid @enderror" value="{{ @old('bonuses') }}" name="bonuses" required>
+                                <input type="number" class="form-control @error('bonuses') is-invalid @enderror" value="{{ @old('bonuses') }}" name="bonuses" required>
                                 @error('bonuses')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -82,36 +82,25 @@
                             
                             <div class="mb-2">
                                 <label class="form-label">Deductions</label>
-                                <input type="text" class="form-control @error('deductions') is-invalid @enderror" value="{{ @old('deductions') }}" name="deductions" required>
+                                <input type="number" class="form-control @error('deductions') is-invalid @enderror" value="{{ @old('deductions') }}" name="deductions" required>
                                 @error('deductions')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
-
+                            
                             <div class="mb-2">
-                                <label class="form-label">Check Out</label>
-                                <input type="date" class="form-control datetime @error('check_out') is-invalid @enderror" value="{{ @old('check_out') }}" name="check_out" required>
-                                @error('check_out')
+                                <label class="form-label">Net Salary</label>
+                                <input type="number" class="form-control @error('net_salary') is-invalid @enderror" value="{{ @old('net_salary') }}" name="net_salary" required>
+                                @error('net_salary')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
 
+
                             <div class="mb-2">
-                                <label class="form-label">Date</label>
-                                <input type="date" class="form-control date @error('date') is-invalid @enderror" value="{{ @old('date') }}" name="date" required>
-                                @error('date')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>
-    
-                            <div class="mb-2">
-                                <label class="form-label">Status</label>
-                                <select name="status" id="status" class="form-control @error('status') is-invalid @enderror">
-                                    <option value="present">Present</option>
-                                    <option value="leave">Leave</option>
-                                    <option value="Absent">Absent</option>
-                                </select>
-                                @error('status')
+                                <label class="form-label">Pay Date</label>
+                                <input type="text" class="form-control date @error('pay_date') is-invalid @enderror" value="{{ @old('pay_date') }}" name="pay_date" required>
+                                @error('pay_date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
