@@ -99,7 +99,7 @@
 
                             <div class="mb-2">
                                 <label class="form-label">Pay Date</label>
-                                <input type="text" class="form-control date @error('pay_date') is-invalid @enderror" value="{{ @old('pay_date') }}" name="pay_date" required>
+                                <input type="date" class="form-control date @error('pay_date') is-invalid @enderror" value="{{ @old('pay_date') }}" name="pay_date" required>
                                 @error('pay_date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

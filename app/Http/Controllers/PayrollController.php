@@ -20,4 +20,19 @@ class PayrollController extends Controller
 
         return view('payrolls.create', compact('employees'));
     }
+
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'employee_id' => 'required|string|max:255',
+            'salary' => 'required|numeric',
+            'bonuses' => 'required|numeric',
+            'deductions' => 'required|numeric',
+            'net_salary' => 'required|numeric',
+            'pay_date' => 'required|date',
+        ]);
+
+        Payroll::create($validated);
+
+        return redirect()->route('payrolls.index')->with('success', 'Payroll created successfully');
+    }
 }
