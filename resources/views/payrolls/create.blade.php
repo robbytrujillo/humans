@@ -39,6 +39,17 @@
                     {{--  <div class="d-flex">
                         <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">New Task</a>
                     </div>  --}}
+
+                    @if ($errors->any()) 
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    
                     <div class="container">
                         <form method="POST" action="{{ route('payrolls.store') }}" >
                         @csrf
@@ -88,13 +99,13 @@
                                 @enderror
                             </div>
                             
-                            <div class="mb-2">
+                            {{--  <div class="mb-2">
                                 <label class="form-label">Net Salary</label>
                                 <input type="number" class="form-control @error('net_salary') is-invalid @enderror" value="{{ @old('net_salary') }}" name="net_salary" disabled>
                                 @error('net_salary')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
-                            </div>
+                            </div>  --}}
 
 
                             <div class="mb-2">

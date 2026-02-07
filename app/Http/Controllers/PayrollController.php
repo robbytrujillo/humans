@@ -27,12 +27,14 @@ class PayrollController extends Controller
             'salary' => 'required|numeric',
             'bonuses' => 'required|numeric',
             'deductions' => 'required|numeric',
-            'net_salary' => 'required|numeric',
+            // 'net_salary' => 'required|numeric',
             'pay_date' => 'required|date',
         ]);
 
-        $netSalary = $request->input('salary') - $request->input('deductions') + $request->input('bonuses');
-        $request->merge(['net_salary' => $netSalary]);
+        // $netSalary = $request->input('salary') + $request->input('bonuses') - $request->input('deductions');
+        // $request->merge(['net_salary' => $netSalary]);
+
+        $validated['net_salary'] = $validated['salary'] + $validated['bonuses'] - $validated['deductions'];
 
         Payroll::create($validated);
 
