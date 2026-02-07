@@ -40,4 +40,10 @@ class PayrollController extends Controller
 
         return redirect()->route('payrolls.index')->with('success', 'Payroll created successfully');
     }
+
+    public function edit(Payroll $payroll) {
+        $employees = Employee::all();
+
+        return view('payrolls.edit', compact('payroll', 'employees'));
+    }
 }
