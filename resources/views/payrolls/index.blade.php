@@ -37,7 +37,7 @@
                 <div class="card-body">
 
                     <div class="d-flex">
-                        <a href="{{ route('payrolls.create') }}" class="btn btn-primary mb-3 ms-auto">
+                        <a href="{{ route('payrolls.create') }}" class="mb-3 btn btn-primary ms-auto">
                             <i class="fa-solid fa-folder-plus"></i> New Payroll
                         </a>
                     </div>
@@ -66,10 +66,10 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $payroll->employee->fullname }}</td>
-                                    <td>{{ number_format($payroll->salary) }}</td>
-                                    <td>{{ number_format($payroll->bonuses) }}</td>
-                                    <td>{{ number_format($payroll->deductions) }}</td>
-                                    <td>{{ number_format($payroll->net_salary) }}</td>
+                                    <td>Rp. {{ number_format($payroll->salary) }}</td>
+                                    <td>Rp. {{ number_format($payroll->bonuses) }}</td>
+                                    <td>Rp. {{ number_format($payroll->deductions) }}</td>
+                                    <td>Rp. {{ number_format($payroll->net_salary) }}</td>
                                     <td>{{ $payroll->pay_date }}</td>
                                     {{--  <td>
                                         @if ($payroll->status == 'present')

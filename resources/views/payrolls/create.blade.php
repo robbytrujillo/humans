@@ -90,7 +90,7 @@
                             
                             <div class="mb-2">
                                 <label class="form-label">Net Salary</label>
-                                <input type="number" class="form-control @error('net_salary') is-invalid @enderror" value="{{ @old('net_salary') }}" name="net_salary" required>
+                                <input type="number" class="form-control @error('net_salary') is-invalid @enderror" value="{{ @old('net_salary') }}" name="net_salary" disabled>
                                 @error('net_salary')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror

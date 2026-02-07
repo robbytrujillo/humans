@@ -31,6 +31,9 @@ class PayrollController extends Controller
             'pay_date' => 'required|date',
         ]);
 
+        $netSalary = $request->input('salary') - $request->input('deductions') + $request->input('bonuses');
+        $request->merge(['net_salary' => $netSalary]);
+
         Payroll::create($validated);
 
         return redirect()->route('payrolls.index')->with('success', 'Payroll created successfully');
