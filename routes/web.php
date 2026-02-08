@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\LeaveRequestController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function () {
@@ -38,6 +39,9 @@ Route::resource('/presences', PresenceController::class);
 
 // Handle Payrolls
 Route::resource('/payrolls', PayrollController::class);
+
+// Handle Leave-request
+Route::resource('/leave-requests', LeaveRequestController::class);
 
 
 // Handle tasks done and pending
