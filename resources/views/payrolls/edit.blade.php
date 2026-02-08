@@ -117,8 +117,14 @@
                                 @enderror
                             </div>
     
-                            <button type="submit" class="btn btn-primary btn-sm">Update Payroll</button>
-                            <a href="{{ route('payrolls.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fas fa-sync-alt"></i>
+                                Update Payroll
+                            </button>
+                            <a href="{{ route('payrolls.index') }}" class="btn btn-secondary btn-sm">
+                                <i class="fas fa-arrow-left"></i>
+                                Back to List
+                            </a>
                         </form>
                     </div>
                 </div>

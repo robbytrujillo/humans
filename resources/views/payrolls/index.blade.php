@@ -71,14 +71,12 @@
                                     <td>Rp. {{ number_format($payroll->deductions) }}</td>
                                     <td>Rp. {{ number_format($payroll->net_salary) }}</td>
                                     <td>{{ $payroll->pay_date }}</td>
-                                    {{--  <td>
-                                        @if ($payroll->status == 'present')
-                                            <span class="text-success">Present</span>
-                                        @else
-                                            <span class="text-danger">{{ ucfirst($payroll->status) }}</span>
-                                        @endif
-                                    </td>  --}}
+                                    
                                     <td>
+                                        <a href="{{ route('payrolls.show', $payroll->id) }}" class="btn btn-info btn-sm">
+                                            <i class="fa-solid fa-eye"></i> Show
+                                        </a>
+                                        
                                         <a href="{{ route('payrolls.edit', $payroll->id) }}" class="btn btn-secondary btn-sm">
                                             <i class="fa-solid fa-pen"></i> Edit
                                         </a>

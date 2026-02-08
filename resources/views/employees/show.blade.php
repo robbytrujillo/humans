@@ -92,7 +92,7 @@
                         <p>Rp. {{ number_format($employee->salary) }},-</p>
                     </div>
                     
-                    <a href="{{ route('employees.index') }}" class="btn btn-light btn-sm rounded-pill">Back to List</a>
+                    <a href="{{ route('employees.index') }}" class="btn btn-light btn-sm">Back to List</a>
                 
                 </div>
 
