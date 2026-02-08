@@ -74,7 +74,7 @@
                                     
                                     <td>
                                         <a href="{{ route('payrolls.show', $payroll->id) }}" class="btn btn-info btn-sm">
-                                            <i class="fa-solid fa-eye"></i> Show
+                                            <i class="fas fa-file-alt"></i> Salary Slip
                                         </a>
                                         
                                         <a href="{{ route('payrolls.edit', $payroll->id) }}" class="btn btn-secondary btn-sm">

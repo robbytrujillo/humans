@@ -36,51 +36,59 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label for=""><b>Employee</b></label>
-                        <p>{{ $payroll->employee->fullname }}</p>
+                    <div id="print-area">
+                        <div class="row">
+    
+                            <div class="col-md-6">
+    
+                                <div class="mb-3">
+                                    <label for=""><b>Employee</b></label>
+                                    <p>{{ $payroll->employee->fullname }}</p>
+                                </div>
+    
+                                <div class="mb-3">
+                                    <label for=""><b>Salary</b></label>
+                                    <p>Rp. {{ number_format($payroll->salary) }}</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for=""><b>Bonuses</b></label>
+                                    <p>Rp. {{ number_format($payroll->bonuses) }}</p>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for=""><b>Deductions</b></label>
+                                    <p>Rp. {{ number_format($payroll->deductions) }}</p>
+                                </div>
+                                
+                                
+    
+                            </div>
+    
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for=""><b>Pay Date</b></label>
+                                    <p>{{ \Carbon\Carbon::parse($payroll->pay_date)->format('d F Y') }}</p>
+                                </div>
+    
+                                <div class="mb-3">
+                                    <label for=""><b>Net Salary</b></label>
+                                    <p>Rp. {{ number_format($payroll->net_salary) }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="mb-3">
-                        <label for=""><b>Pay Date</b></label>
-                        <p>{{ \Carbon\Carbon::parse($payroll->pay_date)->format('d F Y') }}</p>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for=""><b>Salary</b></label>
-                        <p>Rp. {{ number_format($payroll->salary) }}</p>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for=""><b>Bonuses</b></label>
-                        <p>Rp. {{ number_format($payroll->bonuses) }}</p>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for=""><b>Deductions</b></label>
-                        <p>Rp. {{ number_format($payroll->deductions) }}</p>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for=""><b>Net Salary</b></label>
-                        <p>Rp. {{ number_format($payroll->net_salary) }}</p>
-                    </div>
-                    
-                    
-                    <div class="mb-3">
-                        <label for=""><b>Net Salary</b></label>
-                        <p>Rp. {{ number_format($payroll->net_salary) }}</p>
-                    </div>
-                    
-                    <button type="button" class="btn btn-primary btn-sm">
-                        <i class="fas fa-print"></i>
-                        Print
-                    </button>
-                    
                     <a href="{{ route('payrolls.index') }}" class="btn btn-light btn-sm">
                         <i class="fas fa-arrow-left"></i>
                         Back to List
                     </a>
+
+                    <button type="button" id="btn-print" class="btn btn-primary btn-sm">
+                        <i class="fas fa-print"></i>
+                        Print
+                    </button>
+                    
                 
                 </div>
 
@@ -88,5 +96,18 @@
 
         </section>
     </div>
+
+    <script>
+        document.getElementById('btn-print').addEventListener('click', function() {
+            let printContent = document.getElementById('print-area').innerHTML;
+            let originalContent = document.body.innerHTML;
+            
+            document.body.innerHTML = printContent;
+
+            window.print();
+
+            document.body.innerHTML = originalContent;
+        })
+    </script>
     
 @endsection
