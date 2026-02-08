@@ -46,4 +46,21 @@ class PayrollController extends Controller
 
         return view('payrolls.edit', compact('payroll', 'employees'));
     }
+
+    public function update(Request $request, Payroll $payroll) {
+         $validated = $request->validate([
+            'employee_id' => 'required|string|max:255',
+            'salary' => 'required|numeric',
+            'bonuses' => 'required|numeric',
+            'deductions' => 'required|numeric',
+            // 'net_salary' => 'required|numeric',
+            'pay_date' => 'required|date',
+        ]);
+
+        $validated['net_salary'] = $validated['salary'] + $validated['bonuses'] - $validated['deductions'];
+
+        $payroll->update($validated);
+
+        return redirect()->route('payrolls.index')->with('success', 'Payroll updated successfully');
+    }
 }

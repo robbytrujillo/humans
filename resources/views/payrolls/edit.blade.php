@@ -67,7 +67,7 @@
                                 <select name="employee_id" id="employee_id" class="form-control @error('employee_id') is-invalid @enderror">
                                     <option value="">Select an employee</option>
                                     @foreach ($employees as $employee)
-                                        <option value="{{ $employee->id }}" {{ $payroll->employee_id == $empolyee->id ? 'selected' : '' }}>{{ $employee->fullname }}</option>
+                                        <option value="{{ $employee->id }}" {{ $payroll->employee_id == $employee->id ? 'selected' : '' }}>{{ $employee->fullname }}</option>
                                     @endforeach
                                     
                                 </select>
@@ -111,13 +111,13 @@
 
                             <div class="mb-2">
                                 <label class="form-label">Pay Date</label>
-                                <input type="date" class="form-control date @error('pay_date') is-invalid @enderror" value="{{ @old('pay_date', $payroll->pay_date ) }}" name="pay_date" required>
+                                <input type="text" class="form-control date @error('pay_date') is-invalid @enderror" value="{{ @old('pay_date', $payroll->pay_date ) }}" name="pay_date" required>
                                 @error('pay_date')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
     
-                            <button type="submit" class="btn btn-primary btn-sm">Submit Payroll</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Update Payroll</button>
                             <a href="{{ route('payrolls.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
