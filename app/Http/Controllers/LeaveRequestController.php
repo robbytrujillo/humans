@@ -30,15 +30,38 @@ class LeaveRequestController extends Controller
             // 'status' => 'required|string|max:255'',
         ]);
 
-        // $netSalary = $request->input('salary') + $request->input('bonuses') - $request->input('deductions');
-        // $request->merge(['net_salary' => $netSalary]);
-
-        // $validated['net_salary'] = $validated['salary'] + $validated['bonuses'] - $validated['deductions'];
-
         $validated['status'] = 'pending';
         
         LeaveRequest::create($validated);
 
         return redirect()->route('leave-requests.index')->with('success', 'Leave Request created successfully');
+    }
+
+    public function edit(LeaveRequest $leaveRequest) {
+        $employees = Employee::all();
+
+        return view('leave-requests.edit', compact('leaveRequest','employees'));
+    }
+
+    public function update(Request $request, LeaveRequest $leaveRequest) {
+        $validated = $request->validate([
+            'employee_id' => 'required|string|max:255',
+            'leave_type' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date',
+            // 'status' => 'required|string|max:255'',
+        ]);
+
+        $validated['status'] = 'pending';
+        
+        $leaveRequest->update($validated);
+
+        return redirect()->route('leave-requests.index')->with('success', 'Leave Request updated successfully');
+    }
+
+    public function destroy(LeaveRequest $leaveRequest) {
+        $leaveRequest->delete();
+
+        return redirect()->route('leave-requests.index')->with('success', 'Leave Request deleted successfully');
     }
 }
