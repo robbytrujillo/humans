@@ -55,6 +55,7 @@
                                 <th>Employee</th>
                                 <th>Leave Type</th>
                                 <th>Start Date</th>
+                                <th>End Date</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
@@ -67,7 +68,14 @@
                                     <td>{{ $leaveRequest->leave_type }}</td>
                                     <td>{{ $leaveRequest->start_date }}</td>
                                     <td>{{ $leaveRequest->end_date }}</td>
-                                    <td>{{ $leaveRequest->status }}</td>
+
+                                    <td>
+                                        @if ($leaveRequest->status == 'approved')
+                                            <span class="text-success">{{ ucfirst($leaveRequest->status) }}</span>
+                                        @else
+                                            <span class="text-warning">{{ ucfirst($leaveRequest->status) }}</span>    
+                                        @endif
+                                    </td>
                                     
                                     <td>
                                         {{--  <a href="{{ route('leaveRequests.show', $leaveRequest->id) }}" class="btn btn-info btn-sm">
