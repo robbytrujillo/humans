@@ -9,8 +9,8 @@ class LeaveRequestController extends Controller
 {
     //
     public function index() {
-        $leaverequests = LeaveRequest::all();
+        $leaveRequests = LeaveRequest::all();
 
-        return view('leave-requests.index', compact('leaverequests'));
+        return view('leave-requests.index', compact('leaveRequests'));
     }
 }
