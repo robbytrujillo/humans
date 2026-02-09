@@ -35,6 +35,8 @@ class LeaveRequestController extends Controller
 
         // $validated['net_salary'] = $validated['salary'] + $validated['bonuses'] - $validated['deductions'];
 
+        $validated['status'] = 'pending';
+        
         LeaveRequest::create($validated);
 
         return redirect()->route('leave-requests.index')->with('success', 'Leave Request created successfully');
