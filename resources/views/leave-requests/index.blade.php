@@ -82,18 +82,18 @@
                                             <i class="fas fa-file-alt"></i> Salary Slip
                                         </a>  --}}
                                         
-                                        {{--  <a href="{{ route('leaveRequests.edit', $leaveRequest->id) }}" class="btn btn-secondary btn-sm">
+                                        <a href="{{ route('leave-requests.edit', $leaveRequest->id) }}" class="btn btn-secondary btn-sm">
                                             <i class="fa-solid fa-pen"></i> Edit
-                                        </a>  --}}
+                                        </a>
 
-                                        {{--  <form method="POST" action="{{ route('leaveRequests.destroy', $leaveRequest->id) }}" style="display: inline">
+                                        <form method="POST" action="{{ route('leave-requests.destroy', $leaveRequest->id) }}" style="display: inline">
                                             @csrf
                                             @method('DELETE')
 
                                             <button type="submit" class="btn btn-danger btn-sm">
                                                 <i class="fa-solid fa-trash"></i> Delete
                                             </button>    
-                                        </form>  --}}
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
