@@ -74,6 +74,8 @@
             <div class="sidebar-menu">
                 <ul class="menu">
                     <li class="sidebar-title">Menu</li>
+
+                    @if (session('role') === 'HR')
                     <li
                         class="sidebar-item active " >
                         <a href="#" class='sidebar-link'>
@@ -130,9 +132,49 @@
                             <span>Leave Requests</span>
                         </a>
                     </li>
+                    @endif
+
+                    @if (in_array(session('role'), ['IT Support','Education','Finance']))
+                     <li
+                        class="sidebar-item active " >
+                        <a href="#" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li
+                        class="sidebar-item">
+                        <a href="{{ route('tasks.index') }}" class='sidebar-link'>
+                            <i class="bi bi-check-circle-fill"></i>
+                            <span>Tasks</span>
+                        </a>
+                    </li>
                     <li
                         class="sidebar-item">
                         <a href="index.html" class='sidebar-link'>
+                            <i class="bi bi-table"></i>
+                            <span>Presences</span>
+                        </a>
+                    </li>
+                    <li
+                        class="sidebar-item">
+                        <a href="index.html" class='sidebar-link'>
+                            <i class="bi bi-currency-dollar"></i>
+                            <span>Payrolls</span>
+                        </a>
+                    </li>
+                    <li
+                        class="sidebar-item">
+                        <a href="index.html" class='sidebar-link'>
+                            <i class="bi bi-shift-fill"></i>
+                            <span>Leave Requests</span>
+                        </a>
+                    </li>
+                    @endif
+
+                    <li
+                        class="sidebar-item">
+                        <a href="{{ url('/logout') }}" class='sidebar-link'>
                             <i class="bi bi-box-arrow-right"></i>
                             <span>Logout</span>
                         </a>

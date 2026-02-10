@@ -20,35 +20,35 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::middleware('auth')->group(function() {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-// Handle Employees
-Route::resource('/employees', EmployeeController::class);
+    // Handle Employees
+    Route::resource('/employees', EmployeeController::class)->middleware(['role:HR']);
 
-// Handle Tasks
-Route::resource('/tasks', TaskController::class);
+    // Handle Role
+    Route::resource('/roles', RoleController::class)->middleware(['role:HR']);
 
-// Handle Role
-Route::resource('/roles', RoleController::class);
+    // Handle Department
+    Route::resource('/departments', DepartmentController::class)->middleware(['role:HR']);
 
-// Handle Department
-Route::resource('/departments', DepartmentController::class);
+    // Handle Presences
+    Route::resource('/presences', PresenceController::class)->middleware(['role:HR,IT Support,Education,Finance']);
 
-// Handle Presences
-Route::resource('/presences', PresenceController::class);
+    // Handle Payrolls
+    Route::resource('/payrolls', PayrollController::class)->middleware(['role:HR,IT Support,Education,Finance']);
 
-// Handle Payrolls
-Route::resource('/payrolls', PayrollController::class);
-
-// Handle Leave-request
-Route::resource('/leave-requests', LeaveRequestController::class);
-Route::get('/leave-requests/confirm/{id}', [LeaveRequestController::class, 'confirm'])->name('leave-requests.confirm');
-Route::get('/leave-requests/reject/{id}', [LeaveRequestController::class, 'reject'])->name('leave-requests.reject');
+    // Handle Leave-request
+    Route::resource('/leave-requests', LeaveRequestController::class)->middleware(['role:HR,IT Support,Education,Finance']);
+    Route::get('/leave-requests/confirm/{id}', [LeaveRequestController::class, 'confirm'])->name('leave-requests.confirm')->middleware(['role:HR']);
+    Route::get('/leave-requests/reject/{id}', [LeaveRequestController::class, 'reject'])->name('leave-requests.reject')->middleware(['role:HR']);
 
 
-// Handle tasks done and pending
-Route::get('/tasks/done/{id}', [TaskController::class, 'done'])->name('tasks.done');
-Route::get('/tasks/pending/{id}', [TaskController::class, 'pending'])->name('tasks.pending');
+    // Handle tasks, tasks done and pending
+    Route::resource('/tasks', TaskController::class)->middleware(['role:HR,IT Support,Education,Finance']);
+    Route::get('/tasks/done/{id}', [TaskController::class, 'done'])->middleware(['role:HR,IT Support,Education,Finance']);
+    Route::get('/tasks/pending/{id}', [TaskController::class, 'pending'])->middleware(['role:HR,IT Support,Education,Finance']);
+});
 
 // Route::get('/dashboard', [DashboardController::class, 'index']->name('dashboard'));
 
