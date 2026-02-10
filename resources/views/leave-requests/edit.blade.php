@@ -53,6 +53,7 @@
                     <div class="container">
                         <form method="POST" action="{{ route('leave-requests.update', $leaveRequest->id) }}" >
                         @csrf
+                        @method('PUT')
                             {{--  <div class="mb-2">
                                 <label class="form-label">Title</label>
                                 <input type="text" class="form-control" name="title" required>
@@ -122,7 +123,7 @@
                                 @enderror
                             </div>  --}}
     
-                            <button type="submit" class="btn btn-primary btn-sm">Submit Payroll</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Update Payroll</button>
                             <a href="{{ route('leave-requests.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
