@@ -80,14 +80,16 @@
                                     </td>
                                     
                                     <td>
-                                        <a href="{{ route('leave-requests.confirm', $leaveRequest->id) }}" class="btn btn-primary btn-sm">
-                                            <i class="fas fa-check-square"></i> Confirm
-                                        </a>
-                                        
-                                        <a href="{{ route('leave-requests.reject', $leaveRequest->id) }}" class="btn btn-light btn-sm">
-                                            <i class="fas fa-stop-circle"></i> Reject
-                                        </a>
-                                        
+                                        @if ($leaveRequest->status == 'pending' || $leaveRequest->status == 'reject')
+                                            <a href="{{ route('leave-requests.confirm', $leaveRequest->id) }}" class="btn btn-primary btn-sm">
+                                                <i class="fas fa-check-square"></i> Confirm
+                                            </a>
+                                        @else
+                                            <a href="{{ route('leave-requests.reject', $leaveRequest->id) }}" class="btn btn-light btn-sm">
+                                                <i class="fas fa-stop-circle"></i> Reject
+                                            </a>
+                                        @endif
+
                                         <a href="{{ route('leave-requests.edit', $leaveRequest->id) }}" class="btn btn-secondary btn-sm">
                                             <i class="fa-solid fa-pen"></i> Edit
                                         </a>
