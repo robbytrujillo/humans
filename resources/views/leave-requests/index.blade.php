@@ -70,10 +70,12 @@
                                     <td>{{ $leaveRequest->end_date }}</td>
 
                                     <td>
-                                        @if ($leaveRequest->status == 'approved')
+                                        @if ($leaveRequest->status == 'pending')
+                                            <span class="text-warning">{{ ucfirst($leaveRequest->status) }}</span>
+                                        @elseif ($leaveRequest->status == 'confirm')
                                             <span class="text-success">{{ ucfirst($leaveRequest->status) }}</span>
-                                        @else
-                                            <span class="text-warning">{{ ucfirst($leaveRequest->status) }}</span>    
+                                        @elseif ($leaveRequest->status == 'reject')
+                                            <span class="text-danger">{{ ucfirst($leaveRequest->status) }}</span>    
                                         @endif
                                     </td>
                                     
