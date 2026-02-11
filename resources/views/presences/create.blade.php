@@ -37,23 +37,9 @@
                 <div class="card-body">
 
                     @if (session('role') == 'HR')
-
-                    
-
-                    {{--  <div class="d-flex">
-                        <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">New Task</a>
-                    </div>  --}}
-                    <div class="container">
                         <form method="POST" action="{{ route('presences.store') }}" >
                         @csrf
-                            {{--  <div class="mb-2">
-                                <label class="form-label">Title</label>
-                                <input type="text" class="form-control" name="title" required>
-                                @error('title')
-                                    <div class="invalid-feedback">{{ $message }}</div>
-                                @enderror
-                            </div>  --}}
-    
+                           
                             <div class="mb-2">
                                 <label class="form-label">Employee</label>
                                 <select name="employee_id" id="employee_id" class="form-control @error('employee_id') is-invalid @enderror">
@@ -107,10 +93,35 @@
                             <button type="submit" class="btn btn-primary btn-sm">Submit Presence</button>
                             <a href="{{ route('presences.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
-                    </div>
-
                     @else 
-                        Tampilkan Form Mode Karyawan
+                        <form method="POST" action="{{ route('presences.store') }}">
+                             @csrf
+
+                             <div class="mb-3">
+                                <b>Note</b> : Mohon ijinkan akses lokasi, supaya presences diterima 
+                             </div> 
+
+                            <div class="mb-3">
+                                <label class="form-label">Latitude</label>
+                                <input type="text" class="form-control" id="latitude" name="latitude" required>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label">Longitude</label>
+                                <input type="text" class="form-control" id="longitude" name="longitude" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <iframe width="500" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="">
+
+                                </iframe>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                <i class="fas fa-check-circle"></i> Present
+                            </button>
+
+                        </form>
                     @endif
 
                 </div>
@@ -118,5 +129,45 @@
 
         </section>
     </div>
+
+    <script>
+        const iframe = document.querySelector('iframe');
+
+        const officeLat = -6.3801635;
+        const officeLon = 106.8879783;
+        const threshold = 0.01;
+
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            iframe.src = `https://www.google.com/maps?q=$(lat),$(lon)&output=embed`; 
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            {{--  const latitude = document.querySelector('#latitude');
+            const longitude = document.querySelector('#longitude');
+
+            navigator.geolocation.getCurrentPosition(function(position) {
+                latitude.value = position.coords.latitude;
+                longitude.value = position.coords.longitude;
+            });  --}}
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    const lat = position.coords.latitude;
+                    const lon = position.coords.longitude;
+                    document.getElementById('latitude').value = lat;
+                    document.getElementById('longitude').value = long;
+
+                    if (Math.abs(lat - officeLat) <= threshold && Math.abs(lon - officeLon) <= threshold) {
+                        alert('You are in the office');
+                    } else {
+                        alert('You are not in the office');
+                    }
+                })
+            }
+        });
+        
+    </script>
     
 @endsection
