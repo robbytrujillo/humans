@@ -133,14 +133,17 @@
     <script>
         const iframe = document.querySelector('iframe');
 
-        const officeLat = -6.3801635;
-        const officeLon = 106.8879783;
+        {{--  const officeLat = -6.3801635;  --}}
+        const officeLat = -6.3647206405430765;
+        {{--  const officeLon = 106.8879783;  --}}
+        const officeLon = 106.87168952637727;
         const threshold = 0.01;
 
         navigator.geolocation.getCurrentPosition(function(position) {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
-            iframe.src = `https://www.google.com/maps?q=$(lat),$(lon)&output=embed`; 
+            {{--  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31721.812348140516!2d106.87168952637727!3d-6.3647206405430765!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ecc44a6e9259%3A0x3e4e6f976ed54731!2sIbnu%20Hajar%20Boarding%20School!5e0!3m2!1sid!2sid!4v1770785769080!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>  --}}
+            iframe.src = `https://www.google.com/maps?q=${lat},${lon}&output=embed`; 
         });
 
         document.addEventListener('DOMContentLoaded', (event) => {
@@ -149,8 +152,9 @@
                 navigator.geolocation.getCurrentPosition(function(position) {
                     const lat = position.coords.latitude;
                     const lon = position.coords.longitude;
+                    
                     document.getElementById('latitude').value = lat;
-                    document.getElementById('longitude').value = long;
+                    document.getElementById('longitude').value = lon;
 
                     {{--  Compare lokasi sekarang dengan lokasi kantor  --}}
                     const distance = Math.sqrt(Math.pow(lat - officeLat, 2) + Math.pow(lon - officeLon, 2));
