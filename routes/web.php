@@ -46,8 +46,8 @@ Route::middleware('auth')->group(function() {
 
     // Handle tasks, tasks done and pending
     Route::resource('/tasks', TaskController::class)->middleware(['role:HR,IT Support,Education,Finance']);
-    Route::get('/tasks/done/{id}', [TaskController::class, 'done'])->middleware(['role:HR,IT Support,Education,Finance']);
-    Route::get('/tasks/pending/{id}', [TaskController::class, 'pending'])->middleware(['role:HR,IT Support,Education,Finance']);
+    Route::get('/tasks/done/{id}', [TaskController::class, 'done'])->name('tasks.done')->middleware(['role:HR,IT Support,Education,Finance']);
+    Route::get('/tasks/pending/{id}', [TaskController::class, 'pending'])->name('tasks.pending')->middleware(['role:HR,IT Support,Education,Finance']);
 });
 
 // Route::get('/dashboard', [DashboardController::class, 'index']->name('dashboard'));
