@@ -57,7 +57,10 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Status</th>
-                                <th>Action</th>
+
+                                @if (session('role') == 'HR')
+                                    <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -80,28 +83,30 @@
                                     </td>
                                     
                                     <td>
-                                        @if ($leaveRequest->status == 'pending' || $leaveRequest->status == 'reject')
-                                            <a href="{{ route('leave-requests.confirm', $leaveRequest->id) }}" class="btn btn-primary btn-sm">
-                                                <i class="fas fa-check-square"></i> Confirm
+                                        @if (session('role') == 'HR')
+                                            @if ($leaveRequest->status == 'pending' || $leaveRequest->status == 'reject')
+                                                <a href="{{ route('leave-requests.confirm', $leaveRequest->id) }}" class="btn btn-primary btn-sm">
+                                                    <i class="fas fa-check-square"></i> Confirm
+                                                </a>
+                                            @else
+                                                <a href="{{ route('leave-requests.reject', $leaveRequest->id) }}" class="btn btn-light btn-sm">
+                                                    <i class="fas fa-stop-circle"></i> Reject
+                                                </a>
+                                            @endif
+
+                                            <a href="{{ route('leave-requests.edit', $leaveRequest->id) }}" class="btn btn-secondary btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Edit
                                             </a>
-                                        @else
-                                            <a href="{{ route('leave-requests.reject', $leaveRequest->id) }}" class="btn btn-light btn-sm">
-                                                <i class="fas fa-stop-circle"></i> Reject
-                                            </a>
+
+                                            <form method="POST" action="{{ route('leave-requests.destroy', $leaveRequest->id) }}" style="display: inline">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa-solid fa-trash"></i> Delete
+                                                </button>    
+                                            </form>
                                         @endif
-
-                                        <a href="{{ route('leave-requests.edit', $leaveRequest->id) }}" class="btn btn-secondary btn-sm">
-                                            <i class="fa-solid fa-pen"></i> Edit
-                                        </a>
-
-                                        <form method="POST" action="{{ route('leave-requests.destroy', $leaveRequest->id) }}" style="display: inline">
-                                            @csrf
-                                            @method('DELETE')
-
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fa-solid fa-trash"></i> Delete
-                                            </button>    
-                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

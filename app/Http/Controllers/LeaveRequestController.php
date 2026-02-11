@@ -10,7 +10,11 @@ class LeaveRequestController extends Controller
 {
     //
     public function index() {
-        $leaveRequests = LeaveRequest::all();
+        if (session('role') == 'HR') {
+            $leaveRequests = LeaveRequest::all();
+        } else {
+            $leaveRequests = LeaveRequest::where('employee_id', session('employee_id'))->get();    
+        }
 
         return view('leave-requests.index', compact('leaveRequests'));
     }
