@@ -159,11 +159,22 @@
                     document.getElementById('latitude').value = lat;
                     document.getElementById('longitude').value = long;
 
-                    if (Math.abs(lat - officeLat) <= threshold && Math.abs(lon - officeLon) <= threshold) {
+                    {{--  Compare lokasi sekarang dengan lokasi kantor  --}}
+                    const distance = Math.sqrt(Math.pow(lat - officeLat, 2) + Math.pow(lon - officeLon, 2));
+                    
+                    if (distance <= threshold) {
+                        {{--  posisi ada di sekitar kantor  --}}
+                        alert('Anda berada di kantor, selamat bekerja');
+                    } else {
+                        {{--  posisi di luar kantor  --}}
+                        alert('Anda berada di luar kantor, pastikan kamu berada di sekitar kantor untuk melakukan presensi');
+                    }
+
+                    {{--  if (Math.abs(lat - officeLat) <= threshold && Math.abs(lon - officeLon) <= threshold) {
                         alert('You are in the office');
                     } else {
                         alert('You are not in the office');
-                    }
+                    }  --}}
                 })
             }
         });
