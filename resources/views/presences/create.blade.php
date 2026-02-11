@@ -117,7 +117,7 @@
                                 </iframe>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button type="submit" class="btn btn-primary btn-sm" id="btn-present" disabled>
                                 <i class="fas fa-check-circle"></i> Present
                             </button>
 
@@ -158,12 +158,13 @@
                     if (distance <= threshold) {
                         {{--  posisi ada di sekitar kantor  --}}
                         alert('Anda berada di kantor, selamat bekerja');
+                        document.getElementById('btn-present').removeAttribute('disabled');
                     } else {
                         {{--  posisi di luar kantor  --}}
                         alert('Anda berada di luar kantor, pastikan kamu berada di sekitar kantor untuk melakukan presensi');
                     }
 
-                })
+                });
             }
         });
         
