@@ -36,6 +36,10 @@
                 </div>
                 <div class="card-body">
 
+                    @if (session('role') == 'HR')
+
+                    
+
                     {{--  <div class="d-flex">
                         <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">New Task</a>
                     </div>  --}}
@@ -104,6 +108,11 @@
                             <a href="{{ route('presences.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>
+
+                    @else 
+                        Tampilkan Form Mode Karyawan
+                    @endif
+
                 </div>
             </div>
 

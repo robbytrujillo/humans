@@ -37,7 +37,7 @@
                 <div class="card-body">
 
                     <div class="d-flex">
-                        <a href="{{ route('presences.create') }}" class="btn btn-primary mb-3 ms-auto">
+                        <a href="{{ route('presences.create') }}" class="mb-3 btn btn-primary ms-auto">
                             <i class="fa-solid fa-folder-plus"></i> New Presence
                         </a>
                     </div>
@@ -57,7 +57,11 @@
                                 <th>Check Out</th>
                                 <th>Date</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                
+                                @if (session('role') == 'HR')
+                                    <th>Action</th>
+                                @endif
+                                
                             </tr>
                         </thead>
                         <tbody>
@@ -76,18 +80,20 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('presences.edit', $presence->id) }}" class="btn btn-secondary btn-sm">
-                                            <i class="fa-solid fa-pen"></i> Edit
-                                        </a>
+                                        @if (session('role') == 'HR')
+                                            <a href="{{ route('presences.edit', $presence->id) }}" class="btn btn-secondary btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Edit
+                                            </a>
 
-                                        <form method="POST" action="{{ route('presences.destroy', $presence->id) }}" style="display: inline">
-                                            @csrf
-                                            @method('DELETE')
+                                            <form method="POST" action="{{ route('presences.destroy', $presence->id) }}" style="display: inline">
+                                                @csrf
+                                                @method('DELETE')
 
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fa-solid fa-trash"></i> Delete
-                                            </button>    
-                                        </form>
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa-solid fa-trash"></i> Delete
+                                                </button>    
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
