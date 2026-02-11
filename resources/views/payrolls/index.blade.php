@@ -37,9 +37,11 @@
                 <div class="card-body">
 
                     <div class="d-flex">
-                        <a href="{{ route('payrolls.create') }}" class="mb-3 btn btn-primary ms-auto">
-                            <i class="fa-solid fa-folder-plus"></i> New Payroll
-                        </a>
+                        @if (session('role') == 'HR')
+                            <a href="{{ route('payrolls.create') }}" class="mb-3 btn btn-primary ms-auto">
+                                <i class="fa-solid fa-folder-plus"></i> New Payroll
+                            </a>
+                        @endif
                     </div>
 
                     @if (session('success'))
@@ -77,18 +79,20 @@
                                             <i class="fas fa-file-alt"></i> Salary Slip
                                         </a>
                                         
-                                        <a href="{{ route('payrolls.edit', $payroll->id) }}" class="btn btn-secondary btn-sm">
-                                            <i class="fa-solid fa-pen"></i> Edit
-                                        </a>
+                                        @if (session('role') == 'HR')
+                                            <a href="{{ route('payrolls.edit', $payroll->id) }}" class="btn btn-secondary btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Edit
+                                            </a>
 
-                                        <form method="POST" action="{{ route('payrolls.destroy', $payroll->id) }}" style="display: inline">
-                                            @csrf
-                                            @method('DELETE')
+                                            <form method="POST" action="{{ route('payrolls.destroy', $payroll->id) }}" style="display: inline">
+                                                @csrf
+                                                @method('DELETE')
 
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fa-solid fa-trash"></i> Delete
-                                            </button>    
-                                        </form>
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa-solid fa-trash"></i> Delete
+                                                </button>    
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
