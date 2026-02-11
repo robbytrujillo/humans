@@ -21,7 +21,7 @@ Route::get('/', function () {
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function() {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['role:HR,IT Support,Education,Finance']);
 
     // Handle Employees
     Route::resource('/employees', EmployeeController::class)->middleware(['role:HR']);

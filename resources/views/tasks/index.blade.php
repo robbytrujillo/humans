@@ -37,7 +37,7 @@
                 <div class="card-body">
 
                     <div class="d-flex">
-                        <a href="{{ route('tasks.create') }}" class="btn btn-primary mb-3 ms-auto">
+                        <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">
                             <i class="fa-solid fa-folder-plus"></i> New Task
                         </a>
                     </div>
@@ -53,7 +53,6 @@
                             <tr>
                                 <th>No</th>
                                 <th>Title</th>
-                                {{--  <th>Description</th>  --}}
                                 <th>Assigned To</th>
                                 <th>Due Date</th>
                                 <th>Status</th>
@@ -65,7 +64,6 @@
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $task->title }}</td>
-                                    {{--  <td>{{ $task->description }}</td>  --}}
                                     <td>{{ $task->employee->fullname }}</td>
                                     <td>{{ $task->due_date }}</td>
                                     <td>
