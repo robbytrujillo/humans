@@ -37,9 +37,11 @@
                 <div class="card-body">
 
                     <div class="d-flex">
-                        <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">
-                            <i class="fa-solid fa-folder-plus"></i> New Task
-                        </a>
+                        @if (session('role') == 'HR')
+                            <a href="{{ route('tasks.create') }}" class="mb-3 btn btn-primary ms-auto">
+                                <i class="fa-solid fa-folder-plus"></i> New Task
+                            </a>
+                        @endif
                     </div>
 
                     @if (session('success'))
@@ -92,19 +94,21 @@
                                             </a>
                                         @endif
 
-                                        <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-secondary btn-sm">
-                                            <i class="fa-solid fa-pen"></i> Edit
-                                        </a>
-                                        {{--  <a href="" class="btn btn-danger btn-sm">Delete</a>  --}}
+                                        @if (session('role') == 'HR')
+                                            <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-secondary btn-sm">
+                                                <i class="fa-solid fa-pen"></i> Edit
+                                            </a>
+                                            {{--  <a href="" class="btn btn-danger btn-sm">Delete</a>  --}}
 
-                                        <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" style="display: inline">
-                                            @csrf
-                                            @method('DELETE')
+                                            <form method="POST" action="{{ route('tasks.destroy', $task->id) }}" style="display: inline">
+                                                @csrf
+                                                @method('DELETE')
 
-                                            <button type="submit" class="btn btn-danger btn-sm">
-                                                <i class="fa-solid fa-trash"></i> Delete
-                                            </button>    
-                                        </form>
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="fa-solid fa-trash"></i> Delete
+                                                </button>    
+                                            </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
