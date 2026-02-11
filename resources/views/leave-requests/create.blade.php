@@ -123,7 +123,7 @@
                                 @enderror
                             </div>  --}}
     
-                            <button type="submit" class="btn btn-primary btn-sm">Submit Payroll</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Submit Leave Request</button>
                             <a href="{{ route('leave-requests.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
                         </form>
                     </div>

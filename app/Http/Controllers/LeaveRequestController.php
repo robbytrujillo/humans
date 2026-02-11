@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Employee;
 use App\Models\LeaveRequest;
 use Illuminate\Http\Request;
@@ -26,17 +27,28 @@ class LeaveRequestController extends Controller
     }
 
     public function store(Request $request) {
-        $validated = $request->validate([
-            'employee_id' => 'required|string|max:255',
-            'leave_type' => 'required|string|max:255',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
-            // 'status' => 'required|string|max:255'',
-        ]);
+        if (session('role') == 'HR') {
+            $validated = $request->validate([
+                'employee_id' => 'required|string|max:255',
+                'leave_type' => 'required|string|max:255',
+                'start_date' => 'required|date',
+                'end_date' => 'required|date',
+                // 'status' => 'required|string|max:255'',
+                ]);
 
-        $validated['status'] = 'pending';
-        
-        LeaveRequest::create($validated);
+            $validated['status'] = 'pending';
+
+            LeaveRequest::create($validated);
+        } else {
+            LeaveRequest::create([
+                'employee_id' => session('employee_id'),
+                'leave_type' => $request->leave_type,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'status' => 'pending',
+                ]);
+
+        }
 
         return redirect()->route('leave-requests.index')->with('success', 'Leave Request created successfully');
     }
