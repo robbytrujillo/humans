@@ -112,12 +112,12 @@
                             </div>
 
                             <div class="mb-3">
-                                <iframe width="500" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="">
+                                <iframe width="370" height="220" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="">
 
                                 </iframe>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-sm" id="btn-present" disabled>
+                            <button type="submit" class="btn btn-primary btn-sm" id="btn-present">
                                 <i class="fas fa-check-circle"></i> Present
                             </button>
 

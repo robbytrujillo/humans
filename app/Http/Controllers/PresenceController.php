@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Employee;
 use App\Models\Presence;
 use Illuminate\Http\Request;
@@ -26,15 +27,27 @@ class PresenceController extends Controller
     }
 
     public function store(Request $request) {
-        $validated = $request->validate([
-            'employee_id' => 'required|string|max:255',
-            'check_in' => 'required',
-            'check_out' => 'required',
-            'date' => 'required|date',
-            'status' => 'required|string|max:255',
-        ]);
-
-        Presence::create($validated);
+        if (session('role') == 'HR') {
+            $validated = $request->validate([
+                'employee_id' => 'required|string|max:255',
+                'check_in' => 'required',
+                'check_out' => 'required',
+                'date' => 'required|date',
+                'status' => 'required|string|max:255',
+            ]);
+    
+            Presence::create($validated);
+        } else {
+            
+            Presence::create([
+                'employee_id' => session('employee_id'),
+                'check_in' => Carbon::now()->format('Y-m-d H:i:s'),
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'date' => Carbon::now()->format('Y-m-d'),
+                'status' => 'present',
+            ]);
+        }
 
         return redirect()->route('presences.index')->with('success', 'Presence recorded successfully');
     }
