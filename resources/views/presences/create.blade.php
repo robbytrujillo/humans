@@ -144,13 +144,6 @@
         });
 
         document.addEventListener('DOMContentLoaded', (event) => {
-            {{--  const latitude = document.querySelector('#latitude');
-            const longitude = document.querySelector('#longitude');
-
-            navigator.geolocation.getCurrentPosition(function(position) {
-                latitude.value = position.coords.latitude;
-                longitude.value = position.coords.longitude;
-            });  --}}
 
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function(position) {
@@ -170,11 +163,6 @@
                         alert('Anda berada di luar kantor, pastikan kamu berada di sekitar kantor untuk melakukan presensi');
                     }
 
-                    {{--  if (Math.abs(lat - officeLat) <= threshold && Math.abs(lon - officeLon) <= threshold) {
-                        alert('You are in the office');
-                    } else {
-                        alert('You are not in the office');
-                    }  --}}
                 })
             }
         });
