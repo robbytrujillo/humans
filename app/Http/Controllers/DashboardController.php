@@ -13,13 +13,13 @@ class DashboardController extends Controller
 {
     //
     public function index() {
-        $employees = Employee::count();
-        $departments = Department::count();
-        $payrolls = Payroll::count();
-        $presences = Presence::count();
-        $tasks = Task::count();
+        $employee = Employee::count();
+        $department = Department::count();
+        $payroll = Payroll::count();
+        $presence = Presence::count();
+        
+        $tasks = Task::all();
 
-
-        return view('dashboard.index', compact('employees', 'departments', 'payrolls', 'presences', 'tasks' ));
+        return view('dashboard.index', compact('employee', 'department', 'payroll', 'presence', 'tasks' ));
     }
 }

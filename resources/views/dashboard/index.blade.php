@@ -21,12 +21,12 @@
                                         <div class="row">
                                             <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                                 <div class="mb-2 stats-icon purple">
-                                                    <i class="iconly-boldShow"></i>
+                                                    <i class="icon dripicons dripicons-tag"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="font-semibold text-muted">Profile Views</h6>
-                                                <h6 class="mb-0 font-extrabold">112.000</h6>
+                                                <h6 class="font-semibold text-muted">Department</h6>
+                                                <h6 class="mb-0 font-extrabold">{{ $department }}</h6>
                                             </div>
                                         </div> 
                                     </div>
@@ -42,8 +42,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="font-semibold text-muted">Followers</h6>
-                                                <h6 class="mb-0 font-extrabold">183.000</h6>
+                                                <h6 class="font-semibold text-muted">Employee</h6>
+                                                <h6 class="mb-0 font-extrabold">{{ $employee }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -59,8 +59,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="font-semibold text-muted">Following</h6>
-                                                <h6 class="mb-0 font-extrabold">80.000</h6>
+                                                <h6 class="font-semibold text-muted">Payroll</h6>
+                                                <h6 class="mb-0 font-extrabold">{{ $payroll }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -76,8 +76,8 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="font-semibold text-muted">Saved Post</h6>
-                                                <h6 class="mb-0 font-extrabold">112</h6>
+                                                <h6 class="font-semibold text-muted">Presence</h6>
+                                                <h6 class="mb-0 font-extrabold">{{ $presence }}</h6>
                                             </div>
                                         </div>
                                     </div>
