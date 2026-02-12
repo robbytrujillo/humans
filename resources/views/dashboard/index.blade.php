@@ -12,8 +12,9 @@
                 <h3>Dashboard</h3>
             </div> 
             <div class="page-content"> 
-                <section class="row">
-                    <div class="col-12 col-lg-9">
+                {{--  <section class="row">  --}}
+                    {{--  <div class="col-12 col-lg-9">  --}}
+                    {{--  <div class="col-12">  --}}
                         <div class="row">
                             <div class="col-6 col-lg-3 col-md-6">
                                 <div class="card">
@@ -38,7 +39,7 @@
                                         <div class="row">
                                             <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                                 <div class="mb-2 stats-icon blue">
-                                                    <i class="iconly-boldProfile"></i>
+                                                    <i class="icon dripicons dripicons-user-group"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
@@ -55,12 +56,12 @@
                                         <div class="row">
                                             <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                                 <div class="mb-2 stats-icon green">
-                                                    <i class="iconly-boldAdd-User"></i>
+                                                    <i class="icon dripicons dripicons-alarm"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="font-semibold text-muted">Payroll</h6>
-                                                <h6 class="mb-0 font-extrabold">{{ $payroll }}</h6>
+                                                <h6 class="font-semibold text-muted">Presence</h6>
+                                                <h6 class="mb-0 font-extrabold">{{ $presence }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -72,12 +73,12 @@
                                         <div class="row">
                                             <div class="col-md-4 col-lg-12 col-xl-12 col-xxl-5 d-flex justify-content-start ">
                                                 <div class="mb-2 stats-icon red">
-                                                    <i class="iconly-boldBookmark"></i>
+                                                    <i class="icon dripicons dripicons-to-do"></i>
                                                 </div>
                                             </div>
                                             <div class="col-md-8 col-lg-12 col-xl-12 col-xxl-7">
-                                                <h6 class="font-semibold text-muted">Presence</h6>
-                                                <h6 class="mb-0 font-extrabold">{{ $presence }}</h6>
+                                                <h6 class="font-semibold text-muted">Payroll</h6>
+                                                <h6 class="mb-0 font-extrabold">{{ $payroll }}</h6>
                                             </div>
                                         </div>
                                     </div>
@@ -88,7 +89,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Profile Visit</h4>
+                                        <h4>Latest Presence</h4>
                                     </div>
                                     <div class="card-body">
                                         <div id="chart-profile-visit"></div>
@@ -97,7 +98,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-xl-4">
+                            {{--  <div class="col-12 col-xl-4">
                                 <div class="card">
                                     <div class="card-header">
                                         <h4>Profile Visit</h4>
@@ -159,36 +160,48 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-12 col-xl-8">
+                            </div>  --}}
+                            <div class="col-12">
                                 <div class="card">
                                     <div class="card-header">
-                                        <h4>Latest Comments</h4>
+                                        <h4>Latest Task</h4>
                                     </div>
                                     <div class="card-body">
                                         <div class="table-responsive">
                                             <table class="table table-hover table-lg">
                                                 <thead>
                                                     <tr>
-                                                        <th>Name</th>
-                                                        <th>Comment</th>
+                                                        <th>No.</th>
+                                                        <th>Employee</th>
+                                                        <th>Detail</th>
+                                                        <th>Status</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img src="{{ asset('mazer/dist/assets/compiled/jpg/5.jpg') }}">
+
+                                                    @foreach($tasks as $task)
+                                                        <tr>
+                                                            <td class="col-1">
+                                                                {{ $loop->iteration }}
+                                                            </td>
+                                                            <td class="col-3">
+                                                                <div class="d-flex align-items-center">
+                                                                    <div class="avatar avatar-md">
+                                                                        <img src="https://ui-avatars.com/api/?name={{ $task->employee->fullname }}&background=random">
+                                                                    </div>
+                                                                    <p class="mb-0 font-bold ms-3">{{ $task->employee->fullname }}</p>
                                                                 </div>
-                                                                <p class="mb-0 font-bold ms-3">Si Cantik</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class="mb-0 ">Congratulations on your graduation!</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
+                                                            </td>
+                                                            <td class="col-auto">
+                                                                <p class="mb-0 ">{{ $task->title }}</p>
+                                                            </td>
+                                                            <td class="col-auto">
+                                                                <p class="mb-0 ">{{ ucfirst($task->status) }}</p>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+
+                                                    {{--  <tr>
                                                         <td class="col-3">
                                                             <div class="d-flex align-items-center">
                                                                 <div class="avatar avatar-md">
@@ -201,7 +214,7 @@
                                                             <p class="mb-0 ">Wow amazing design! Can you make another tutorial for
                                                                 this design?</p>
                                                         </td>
-                                                    </tr>
+                                                    </tr>  --}}
                                                 </tbody>
                                             </table>
                                         </div>
@@ -209,8 +222,8 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-12 col-lg-3">
+                    {{--  </div>  --}}
+                    {{--  <div class="col-12 col-lg-3">
                         <div class="card">
                             <div class="px-4 py-4 card-body">
                                 <div class="d-flex align-items-center">
@@ -269,8 +282,8 @@
                                 <div id="chart-visitors-profile"></div>
                             </div>
                         </div>
-                    </div>
-                </section>
+                    </div>  --}}
+                {{--  </section>  --}}
             </div>
 
         @endsection
