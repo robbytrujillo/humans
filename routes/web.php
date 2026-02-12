@@ -12,8 +12,12 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\LeaveRequestController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 // Route::get('/dashboard', function () {
@@ -22,6 +26,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['role:HR,IT Support,Education,Finance']);
+    Route::get('/dashboard/presence', [DashboardController::class, 'presence']);
 
     // Handle Employees
     Route::resource('/employees', EmployeeController::class)->middleware(['role:HR']);

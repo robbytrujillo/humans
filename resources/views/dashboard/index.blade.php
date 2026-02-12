@@ -85,6 +85,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="col-12">
                                 <div class="card">
@@ -92,11 +93,13 @@
                                         <h4>Latest Presence</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div id="chart-profile-visit"></div>
+                                        {{--  <div id="chart-profile-visit"></div>  --}}
+                                        <canvas id="presence"></canvas>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             {{--  <div class="col-12 col-xl-4">
                                 <div class="card">
